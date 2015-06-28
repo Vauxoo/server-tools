@@ -35,6 +35,10 @@ class Webhook(models.Model):
                     'X-Github-Event')
 
     @api.one
+    def run_webhook_github_ping(self):
+        return True
+
+    @api.one
     def run_webhook_github_pull_request(self):
         """
         Implementation example:

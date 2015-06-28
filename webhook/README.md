@@ -72,3 +72,10 @@ class Webhook(models.Model):
             self.env.request.jsonrequest['repository']['name']
         ))
 ```
+
+External Dependecies
+---------------
+Install python package ipaddress
+You can use pip to install
+`pip install ipaddress`
+

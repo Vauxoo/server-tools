@@ -18,6 +18,9 @@
     'depends': [
         'web',
     ],
+    'external_dependencies': {
+        'python': ['ipaddress'],
+    },
     'data': [
     ],
     'qweb': [
