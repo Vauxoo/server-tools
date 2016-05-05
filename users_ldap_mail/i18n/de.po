@@ -6,12 +6,12 @@
 # Rudolf Schnapka <rs@techno-flex.de>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: server-tools (8.0)\n"
+"Project-Id-Version: server-tools (9.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-19 14:44+0000\n"
-"PO-Revision-Date: 2016-01-18 14:01+0000\n"
+"POT-Creation-Date: 2016-04-17 12:15+0000\n"
+"PO-Revision-Date: 2016-04-21 09:16+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
-"Language-Team: German (http://www.transifex.com/oca/OCA-server-tools-8-0/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-server-tools-9-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -19,23 +19,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: users_ldap_mail
-#: help:res.company.ldap,name_attribute:0
+#: model:ir.model.fields,help:users_ldap_mail.field_res_company_ldap_name_attribute
 msgid ""
 "By default 'cn' is used. For ActiveDirectory you might use 'displayName' "
 "instead."
-msgstr "Per Vorgabe wird #cn' benutzt. Für Active Directory möchten Sie evtl. 'displayName' stattdessen verwenden."
+msgstr "'cn' wird per Vorgabe benutzt. Bei ActiveDirectory können Sie stattdessen 'displayName' verwenden."
 
 #. module: users_ldap_mail
-#: field:res.company.ldap,mail_attribute:0
+#: model:ir.model.fields,field_description:users_ldap_mail.field_res_company_ldap_mail_attribute
 msgid "E-mail attribute"
-msgstr "Email-Attribute"
+msgstr "Email-Attribut"
 
 #. module: users_ldap_mail
-#: help:res.company.ldap,mail_attribute:0
+#: model:ir.model.fields,help:users_ldap_mail.field_res_company_ldap_mail_attribute
 msgid "LDAP attribute to use to retrieve em-mail address."
-msgstr "Zu verwendendes LDAP-Attribut, um Email-Adresse zu erhalten."
+msgstr "LDAP-Attribut, um eine Email-Adresse zu erhalten."
 
 #. module: users_ldap_mail
-#: field:res.company.ldap,name_attribute:0
+#: model:ir.model.fields,field_description:users_ldap_mail.field_res_company_ldap_name_attribute
 msgid "Name Attribute"
-msgstr "Attributbezeichnung"
+msgstr "Namens-Attribut"
+
+#. module: users_ldap_mail
+#: model:ir.model,name:users_ldap_mail.model_res_company_ldap
+msgid "res.company.ldap"
+msgstr "res.company.ldap"
