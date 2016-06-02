@@ -7,7 +7,7 @@
 # planned by: moylop260@vauxoo.com
 
 {
-    'name': 'Attach image in email',
+    'name': 'Mail attach image',
     'version': '8.0.1.0.0',
     'author': 'Vauxoo',
     'category': 'Addons Vauxoo',
