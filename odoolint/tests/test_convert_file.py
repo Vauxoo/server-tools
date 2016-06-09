@@ -8,6 +8,7 @@ from logging.handlers import BufferingHandler
 
 from openerp.tests import common
 from openerp.tools.convert import convert_file
+from openerp import tools
 
 _logger = logging.getLogger(__name__)
 
@@ -85,6 +86,24 @@ class TestConvertFile(common.TransactionCase):
             self.assertEqual(len(logs), msgs_expected)
         return imd_new
 
+    tools.mute_logger('openerp.addons.odoolint.models.ir_model_data')
+    def create_unreachable(self, old_xmlid, new_xml_id=None, new_module=None,
+                           auto_install=None):
+        """Create a xml_id valid but unreachable
+        """
+        if new_module is None:
+            new_module = 'unreachable'
+        if new_xml_id is None:
+            new_xml_id = old_xmlid.split('.')[1]
+        self.imm.search([('name', '=', self.module)], limit=1).copy({
+            'name': new_module, 'state': 'installed',
+            'auto_install': auto_install})
+        unreachable = self.imd.search([
+            ('name', '=', old_xmlid.split('.')[1]),
+            ('module', '=', old_xmlid.split('.')[0])], limit=1).copy({
+                'name': new_xml_id, 'module': new_module})
+        return unreachable
+
     def test_10_demo_ref_from_data(self):
         """Test demo referenced from data
         """
@@ -107,7 +126,7 @@ class TestConvertFile(common.TransactionCase):
         """Test a xml_id referenced unreachable
         """
         imd_new = self.create_imd(self.fdemo, 'data', 1, 0)
-        imd_new.write({'module': 'unreachable'})
+        self.create_unreachable(imd_new.module + '.' + imd_new.name)
         imd_new = self.create_imd(self.funachiev, 'data', 1, 1)
         msg_expected = self.msg_xmlid_unreachable % \
             'unreachable.res_partner_category_demo_01'
@@ -117,34 +136,32 @@ class TestConvertFile(common.TransactionCase):
         """Test a xml_id overwritten unreachable
         """
         imd_new = self.create_imd(self.fdemo, 'data', 1, 0)
-        self.imm.search([('name', '=', self.module)], limit=1).copy({
-            'name': 'unreachable', 'state': 'installed', 'auto_install': False
-        })
-        imd_new.write({'module': 'unreachable'})
+        self.create_unreachable(imd_new.module + '.' + imd_new.name)
         self.create_imd(self.funachiev2, 'data', 0, 1)
         msg_expected = self.msg_xmlid_unreachable % \
             'unreachable.res_partner_category_demo_01'
         self.assertEqual(self.get_logs()[0], msg_expected)
 
-    def test_50_ref_achievable(self):
-        """Test a xml_id referenced unreachable directly but achievable by
+    def test_50_ref_reachable(self):
+        """Test a xml_id referenced unreachable directly but reachable by
         a module 'auto_install'
         """
         imd_new = self.create_imd(self.fdemo, 'data', 1, 0)
-        self.assertFalse(self.handler.buffer)
-        self.imm.search([('name', '=', self.module)], limit=1).copy({
-            'name': 'unreachable', 'state': 'installed', 'auto_install': True
-        })
-        imd_new.write({'module': 'unreachable'})
+        self.create_unreachable(imd_new.module + '.' + imd_new.name,
+                                auto_install=True)
         self.create_imd(self.funachiev, 'data', 1, 0)
 
-    def test_60_overwritten_achievable(self):
-        """Test a xml_id overwritten unreachable directly but achievable by
+    def test_60_overwritten_reachable(self):
+        """Test a xml_id overwritten unreachable directly but reachable by
         a module 'auto_install'
         """
         imd_new = self.create_imd(self.fdemo, 'data', 1, 0)
-        self.imm.search([('name', '=', self.module)], limit=1).copy({
-            'name': 'unreachable', 'state': 'installed', 'auto_install': True
-        })
-        imd_new.write({'module': 'unreachable'})
+        self.create_unreachable(imd_new.module + '.' + imd_new.name,
+                                auto_install=True)
         self.create_imd(self.funachiev2, 'data', 0, 0)
+
+    def test_70_ref_unreachable_csv(self):
+        """Test a xml_id referenced unreachable
+        """
+        self.create_unreachable('base.group_user')
+        self.create_imd('security/ir.model.access.csv', 'data', 2, 1)
