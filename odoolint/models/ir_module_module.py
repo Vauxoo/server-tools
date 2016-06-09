@@ -53,7 +53,6 @@ class IrModuleModule(models.Model):
             what are know dependencies and avoid get recursion sub-depends
         """
         all_dep_ids = set(self.ids) | set(known_dep_ids or [])
-        # TODO: Use SUPERUSER_ID or use sql directly for faster result
         auto_inst_domain = [('auto_install', '=', True),
                             ('id', 'not in', list(all_dep_ids))]
         new_autinst_satisfied = self.search(auto_inst_domain).filtered(
