@@ -4,22 +4,25 @@
 
 import logging
 import os
-from logging.handlers import BufferingHandler
 
 from openerp.tests import common
 from openerp.tools.convert import convert_file
-from openerp import tools
 
 _logger = logging.getLogger(__name__)
+MODULE = os.path.basename(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+LOGGER_WORK = 'openerp.addons.%s.models.ir_model_data' % MODULE
 
 
-class TestHandler(BufferingHandler):
-    """Logging handler to get the logger messages
+class TestFilter(logging.Filter):
+    """Class to add the record logging filtered in `self.buffer`
+    and don't show it
     """
 
-    def emit(self, record):
-        """Append logging message record to `self.buffer`
-        """
+    def __init__(self):
+        self.buffer = []
+
+    def filter(self, record):
         self.buffer.append(record.__dict__)
 
 
@@ -29,12 +32,9 @@ class TestConvertFile(common.TransactionCase):
 
     def setUp(self):
         super(TestConvertFile, self).setUp()
-        self.module = os.path.basename(
-            os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-        self.handler = TestHandler(0)
-        self.imd_logger = logging.getLogger(
-            'openerp.addons.%s.models.ir_model_data' % self.module)
-        self.imd_logger.addHandler(self.handler)
+        self.imd_logger = logging.getLogger(LOGGER_WORK)
+        self.logger_filter = TestFilter()
+        self.imd_logger.addFilter(self.logger_filter)
         self.imd = self.env['ir.model.data']
         self.imm = self.env['ir.module.module']
         self.fdemo = 'demo/partner_category_demo.xml'
@@ -43,22 +43,22 @@ class TestConvertFile(common.TransactionCase):
         self.funachiev = 'data/partner_category_unreachable_data.xml'
         self.funachiev2 = 'data/partner_category_unreachable_data2.xml'
         self.msg_demo_ref_from_data = (
-            u"Demo xml_id 'res_partner_category_demo_01' of '" + self.module +
+            u"Demo xml_id 'res_partner_category_demo_01' of '" + MODULE +
             "/demo/partner_category_demo.xml' is referenced from data xml '" +
-            self.module + "/data/%s'")
+            MODULE + "/data/%s'")
         self.msg_xmlid_unreachable = (u"The xml_id '%s' is unreachable.")
 
     def tearDown(self):
         super(TestConvertFile, self).tearDown()
         self.imd.clear_caches()
         self.imm.clear_caches()
-        self.imd_logger.removeHandler(self.handler)
-        self.handler.close()
+        self.imd_logger.removeFilter(self.logger_filter)
 
     def get_logs(self, levelno=None):
         levelno = logging.WARNING if levelno is None else levelno
         return [
-            log['message'] for log in self.handler.buffer
+            log.get('msg') % log.get('args')
+            for log in self.logger_filter.buffer
             if log['levelno'] == levelno]
 
     def create_imd(self, filename, kind, rows_expected=None,
@@ -70,11 +70,11 @@ class TestConvertFile(common.TransactionCase):
         :param rows_expected int: Number of records expected.
         :param msgs_expected int: Number of logger messages expected.
         :param module str: Name of module to import filename.
-            default self.module
+            default MODULE
         :return: ir.model.data browse with records created.
         """
         if module is None:
-            module = self.module
+            module = MODULE
         imd_before = self.imd.search([('module', '=', module)])
         convert_file(self.cr, module, filename, None, kind=kind)
         imd_after = self.imd.search([('module', '=', module)])
@@ -86,7 +86,6 @@ class TestConvertFile(common.TransactionCase):
             self.assertEqual(len(logs), msgs_expected)
         return imd_new
 
-    tools.mute_logger('openerp.addons.odoolint.models.ir_model_data')
     def create_unreachable(self, old_xmlid, new_xml_id=None, new_module=None,
                            auto_install=None):
         """Create a xml_id valid but unreachable
@@ -95,7 +94,7 @@ class TestConvertFile(common.TransactionCase):
             new_module = 'unreachable'
         if new_xml_id is None:
             new_xml_id = old_xmlid.split('.')[1]
-        self.imm.search([('name', '=', self.module)], limit=1).copy({
+        self.imm.search([('name', '=', MODULE)], limit=1).copy({
             'name': new_module, 'state': 'installed',
             'auto_install': auto_install})
         unreachable = self.imd.search([
