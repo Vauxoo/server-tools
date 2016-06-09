@@ -103,7 +103,7 @@ class TestConvertFile(common.TransactionCase):
             'partner_category_data2.xml'
         self.assertEqual(self.get_logs()[0], msg_expected)
 
-    def test_30_xml_id_ref_unreachable(self):
+    def test_30_ref_unreachable(self):
         """Test a xml_id referenced unreachable
         """
         imd_new = self.create_imd(self.fdemo, 'data', 1, 0)
@@ -113,7 +113,7 @@ class TestConvertFile(common.TransactionCase):
             'unreachable.res_partner_category_demo_01'
         self.assertEqual(self.get_logs()[0], msg_expected)
 
-    def test_40_xml_id_overwritten_unreachable(self):
+    def test_40_overwritten_unreachable(self):
         """Test a xml_id overwritten unreachable
         """
         imd_new = self.create_imd(self.fdemo, 'data', 1, 0)
@@ -126,7 +126,7 @@ class TestConvertFile(common.TransactionCase):
             'unreachable.res_partner_category_demo_01'
         self.assertEqual(self.get_logs()[0], msg_expected)
 
-    def test_50_xml_id_ref_achievable(self):
+    def test_50_ref_achievable(self):
         """Test a xml_id referenced unreachable directly but achievable by
         a module 'auto_install'
         """
@@ -138,7 +138,7 @@ class TestConvertFile(common.TransactionCase):
         imd_new.write({'module': 'unreachable'})
         self.create_imd(self.funachiev, 'data', 1, 0)
 
-    def test_60_xml_id_overwritten_achievable(self):
+    def test_60_overwritten_achievable(self):
         """Test a xml_id overwritten unreachable directly but achievable by
         a module 'auto_install'
         """
