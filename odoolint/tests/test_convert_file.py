@@ -20,6 +20,7 @@ class TestFilter(logging.Filter):
     """
 
     def __init__(self):
+        super(TestFilter, self).__init__()
         self.buffer = []
 
     def filter(self, record):
