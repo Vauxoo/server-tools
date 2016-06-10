@@ -1,0 +1,92 @@
+<openerp>
+    <data>
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <template id="module_layout" name="Geenral Layout to watch module info">
+            &lt;!DOCTYPE html&gt;
+            <html>
+            <head>
+                <link rel="stylesheet" href="/web_graph/static/src/css/nv.d3.css"/>
+                <link rel="stylesheet" href="/module_dependencies_view/static/css/module.css"/>
+                <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
+                <script type="text/javascript" src="/web_graph/static/lib/nvd3/nv.d3.js"></script>
+                <script type="text/javascript" src="/web_graph/static/lib/nvd3/d3.v3.js"></script>
+                <script type="text/javascript" src="/module_dependencies_view/static/js/jquery.min.js"></script>
+                <script type="text/javascript" src="/module_dependencies_view/static/js/backbone-min.js"></script>
+                <script type="text/javascript" src="/web/static/lib/bootstrap/js/bootstrap.js"></script>
+            </head>
+            <body>
+                <t t-raw="0"/>
+            </body>
+            </html>
+        </template>
+        <template id="module" name="Module Graph Viw">
+            <t t-call="module_dependencies_view.module_layout">
+                <div class="container-fluid">
+                    <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-4 text-center">
+                            <a t-attf-href="/web#return_label=Module&amp;view_type=form&amp;model=#{object._name}&amp;id=#{object.id}&amp;action=#{'base.open_module_tree'}">
+                                <img t-att-src="object.icon" width="40%" height="auto"/>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-xs-8 text-center">
+                            <h1>
+                                <a t-attf-href="/web#return_label=Module&amp;view_type=form&amp;model=#{object._name}&amp;id=#{object.id}&amp;action=#{'base.open_module_tree'}">
+                                    <t t-esc="object.display_name"/>
+                                </a><br/>
+                                <small>
+                                    by <t t-esc="object.author"/>
+                                </small>
+                            </h1>
+                        </div>
+                        <div class="col-md-3 col-xs-12 text-center">
+                            <span class="text-muted">Computed in: <b t-esc="computed.total_seconds()"></b> secs</span><br/>
+                            <span class="text-muted">Technical Name: <b t-esc="object.name"/></span>
+                            <span><a class="btn btn-link btn-xs"
+                                t-att-href="object.website"
+                                target="NEW">Module Website</a></span>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <t t-call="module_dependencies_view.graph"/>
+                    </div>
+                    <div class="row">
+                        <t t-call="module_dependencies_view.info"/>
+                    </div>
+                </div>
+                <script src="/module_dependencies_view/static/js/module.js" type="text/javascript"></script>
+            </t>
+        </template>
+        <template id="module_dependencies_view.graph" name="Module Information">
+            <div id="tree"
+                 t-att-data-id="object.id"
+                 t-att-data-name="object.name"
+                 t-att-data-depends="tree"/>
+        </template>
+        <template id="module_dependencies_view.info" name="Module Information">
+
+            <!-- <t t-foreach="object._fields" t-as="field"> -->
+            <!--     <div class="media"> -->
+            <!--       <div class="media-body"> -->
+            <!--         <h4 class="media-heading"><t t-esc="field"/></h4> -->
+            <!--         <t t-if="field.find('image') &gt; 1"> -->
+            <!--           <p><img t-attf-src="data:image/png;base64,{{object[field]}}" height="70" width="89"></img></p> -->
+            <!--         </t> -->
+            <!--         <t t-if="field.find('image') &lt; 1"> -->
+            <!--           <p><t t-raw="object[field]"/></p> -->
+            <!--         </t> -->
+            <!--       </div> -->
+            <!--     </div> -->
+            <!-- </t> -->
+        </template>
+    </data>
+</openerp>
