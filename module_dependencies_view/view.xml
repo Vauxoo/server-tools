@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="module_form_diagram" model="ir.ui.view">
+            <field name="name">ir.module.module.diagram</field>
+            <field name="model">ir.module.module</field>
+            <field name="inherit_id" ref="base.module_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_clear']" position="after">
+                    <button name="open_diagram" class="oe_link" string="Dependency Diagram View" type="object"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

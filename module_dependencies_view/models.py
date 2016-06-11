@@ -27,3 +27,16 @@ class module_dependencies_view(models.Model):
     def depends(self):
         module = self.get_depends_dict(self)
         return json.dumps(module)
+
+    @api.multi
+    def open_diagram(self):
+        self.ensure_one()
+        diagram_url = "/module/%i" % self.id
+        action = {
+            'type': 'ir.actions.act_url',
+            'name': "Diagram View.",
+            'target': "new",
+            'context': self._context,
+            'url': diagram_url,
+        }
+        return action
