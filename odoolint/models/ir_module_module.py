@@ -14,7 +14,9 @@ class IrModuleModule(models.Model):
     def _get_module_upstream_dependencies(
             self, mod_ids, known_dep_ids=None,
             exclude_states=['installed', 'uninstallable', 'to remove']):
-        """Copied from odoo native ir.module.module v9.0
+        """Copied from odoo native ir.module.module v9.0 and apply patch
+        https://github.com/odoo/odoo/pull/12421
+
         Return the dependency tree of modules of the given `ids`, and that
         satisfy the `exclude_states` filter """
         # It to avoid overwrite the original method
@@ -27,7 +29,7 @@ class IrModuleModule(models.Model):
             '''SELECT DISTINCT m.id
             FROM
                 ir_module_module_dependency d
-            JOIN
+            RIGHT JOIN
                 ir_module_module m ON (d.module_id=m.id)
             WHERE
                 m.name IN (
