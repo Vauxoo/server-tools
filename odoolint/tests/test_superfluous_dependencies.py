@@ -61,8 +61,8 @@ class TestSuperfluousDependencies(common.TransactionCase):
         return list(reason)
 
     def test_no_superfluous_dependencies(self):
-        """Test no superfluous dependencies assuming that %s don't have""" % (
-             self.work_module)
+        """Test no superfluous dependencies assuming that self.work_module
+        not have"""
         work_module = self.imm.search([('name', '=', self.work_module)])
         work_module.compute_superfluous_dependencies()
         superfluous = work_module.dependencies_id.filtered('superfluous')
