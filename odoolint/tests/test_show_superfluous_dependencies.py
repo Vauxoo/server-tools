@@ -13,7 +13,7 @@ class TestShowSuperfluousDependencies(common.TransactionCase):
     def test_show_superfluous_dependencies(self):
         """Show a warning of all the superfluous dependency cases"""
         modules = self.env['ir.module.module'].search([
-            ('state', '!=', 'uninstallable')])
+            ('state', '=', 'installed')])
         modules.compute_superfluous_dependencies()
         dependencies = \
             modules.mapped('dependencies_id').filtered('superfluous')
