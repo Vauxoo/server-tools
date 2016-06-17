@@ -1,0 +1,10 @@
+ <openerp>
+  <data>
+    <!-- THIS TEMPLATE IS USED TO INSERT JS FILES USED IN THE COMMON ASSETS -->
+    <template id="assets_backend_disable_dom_log" inherit_id="web.assets_common" name="Disable DOM Log">
+      <xpath expr="//script[@src='/web/static/src/js/tour.js']" position="after">
+        <script type="text/javascript" src="/tour_disable_log/static/src/js/tour_disable_log.js"></script>
+      </xpath>
+    </template>
+  </data>
+</openerp>
