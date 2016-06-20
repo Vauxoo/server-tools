@@ -29,7 +29,7 @@ class TestShowBrokenLink(common.TransactionCase):
                         continue
                     xml_ids = view._get_xml_ids()
                     xmlid = xml_ids and xml_ids.values()[0][0] or ''
-                    xml_id = xmlid.split('.')[1]
-                    module_logger = logging.getLogger(__name__ + '.' + module)
+                    current_module, xml_id = xmlid.split('.')
+                    module_logger = logging.getLogger(__name__ + '.' + current_module)
                     module_logger.warning("View '%s' has broken url '%s'.",
                                           xml_id, href)
