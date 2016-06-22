@@ -45,6 +45,7 @@ class IrMailServer(models.Model):
 
             fname = ftemplate % fcounter
             fcounter += 1
+            data = data.replace('%0A', '\n')
             custom_attachments.append((fname, base64.b64decode(data)))
 
             new_body += '"cid:%s"' % fname
