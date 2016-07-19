@@ -7,3 +7,4 @@ from . import test_superfluous_dependencies
 from . import test_show_superfluous_dependencies
 from . import test_show_broken_link
 from . import test_show_broken_button
+from . import test_show_duplicated_items_selection
