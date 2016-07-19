@@ -15,7 +15,9 @@ class TestShowDuplicatedItemsSelection(common.TransactionCase):
     def test_show_duplicated_items_selection(self):
         """Show a warning of all duplicated items from fields selection"""
         fields = self.env['ir.model.fields'].search([
-            ('ttype', '=', 'selection')])
+            ('ttype', '=', 'selection'),
+            ('model', '!=', 'report.account.receivable'),
+        ])
         models = {}
         for field in fields:
             models.setdefault(field.model, self.env[field.model])
