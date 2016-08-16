@@ -136,8 +136,8 @@ class IrModelData(models.Model):
             if model_obj._fields[f_name].type == 'boolean' and \
                     isinstance(f_val, basestring):
                 _logger.warning(
-                    "Passing unexpected non boolean value '%(f_name)s' "
-                    "in boolean field '%(f_val)s'")
+                    "Passing unexpected non boolean value '%s' "
+                    "in boolean field '%s'", f_name, f_val)
         return super(IrModelData, self)._update(
             cr, uid, model=model, module=module, values=values, xml_id=xml_id,
             store=store, noupdate=noupdate, mode=mode, res_id=res_id,

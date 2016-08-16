@@ -179,4 +179,4 @@ class TestConvertFile(common.TransactionCase):
 
     def test_80_boolean_without_eval(self):
         """Test a xml data using a field boolean without eval"""
-        self.create_imd('demo/partner_demo.xml', 'demo', 1, 2)
+        self.create_imd('demo/partner_demo.xml', 'demo', 0, 2)
