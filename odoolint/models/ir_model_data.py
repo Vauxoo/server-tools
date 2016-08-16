@@ -133,7 +133,8 @@ class IrModelData(models.Model):
             values = {}
         model_obj = self.pool[model]
         for f_name, f_val in values.items():
-            if model_obj._fields[f_name].type == 'boolean' and \
+            if f_name in model_obj._fields and \
+                    model_obj._fields[f_name].type == 'boolean' and \
                     isinstance(f_val, basestring):
                 _logger.warning(
                     "Passing unexpected non boolean value '%s' "
