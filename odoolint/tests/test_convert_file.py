@@ -176,3 +176,7 @@ class TestConvertFile(common.TransactionCase):
         """
         self.create_unreachable('base.group_user')
         self.create_imd('security/ir.model.access.csv', 'data', 2, 1)
+
+    def test_80_boolean_without_eval(self):
+        """Test a xml data using a field boolean without eval"""
+        self.create_imd('demo/partner_demo.xml', 'demo', 1, 2)

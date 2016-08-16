@@ -129,6 +129,15 @@ class IrModelData(models.Model):
             except BaseException:
                 # All exceptions are off-target here
                 pass
+        if values is None:
+            values = {}
+        model_obj = self.pool[model]
+        for f_name, f_val in values.items():
+            if model_obj._fields[f_name].type == 'boolean' and \
+                    isinstance(f_val, basestring):
+                _logger.warning(
+                    "Passing unexpected non boolean value '%(f_name)s' "
+                    "in boolean field '%(f_val)s'")
         return super(IrModelData, self)._update(
             cr, uid, model=model, module=module, values=values, xml_id=xml_id,
             store=store, noupdate=noupdate, mode=mode, res_id=res_id,
