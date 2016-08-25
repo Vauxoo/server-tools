@@ -4,6 +4,7 @@
 
 import imp
 import logging
+import re
 from contextlib import contextmanager
 
 from openerp import tools
@@ -62,6 +63,39 @@ def monkey_patch_convert_file():
     imp.reload(tools)
 
 
+class WerkzeugFilter(logging.Filter):
+    """Add a log error if there is a 404 code in the message"""
+
+    def __init__(self, logger, level=None):
+        self.__level = level
+        self.__logger = logger
+        super(WerkzeugFilter, self).__init__()
+
+    def get_message_status_code(self, msg):
+        re_res = re.search(r" (\d+) -$", msg)
+        return re_res and int(re_res.group(1))
+
+    def has_error(self, msg):
+        status_code = self.get_message_status_code(msg)
+        if status_code == 404:
+            return True
+
+    def filter(self, record):
+        if self.__level is None or record.levelno != self.__level:
+            return True
+        msg = record.__dict__.get('msg') or ''
+        if self.has_error(msg):
+            self.__logger.error('werzeurg has error: %s', msg)
+        return True
+
+
+def patch_werkzeug_logger():
+    werkzeug_logger = logging.getLogger('werkzeug')
+    werkzeug_filter = WerkzeugFilter(_logger, logging.INFO)
+    werkzeug_logger.addFilter(werkzeug_filter)
+
+
 def post_load():
     _logger.info('Patching openerp.tools.convert.convert_file method')
     monkey_patch_convert_file()
+    patch_werkzeug_logger()
