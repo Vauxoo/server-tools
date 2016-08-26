@@ -28,6 +28,8 @@ install:
   - git clone https://github.com/vauxoo/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
+    # We don't need have installed 2 times the odoolint module (from mqt and this repo)
+  - rm -rf ${HOME}/odoolintsqa/odoolint_isolated
   - printf '[options]\n\nrunning_env = dev\n' > ${HOME}/.openerp_serverrc
   - ln -s ${TRAVIS_BUILD_DIR}/server_environment_files_sample ${TRAVIS_BUILD_DIR}/server_environment_files
 script:
