@@ -34,9 +34,8 @@ class TestWerkzeug404(HttpCase):
         super(TestWerkzeug404, self).setUp()
         self.__logger_filter = TestFilter(logging.ERROR)
         current_module = get_current_module_name()
-        # Server tools use odoolint and odoolint_isolated because MQT
         for logger in ['openerp.addons.%s.hooks' % current_module,
-                       'openerp.addons.odoolint.hooks', 'openerp.netsvc']:
+                       'openerp.netsvc']:
             self.__logger = logging.getLogger(logger)
             self.__logger.addFilter(self.__logger_filter)
 
