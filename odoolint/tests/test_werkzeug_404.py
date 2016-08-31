@@ -3,7 +3,7 @@
 import logging
 import os
 
-from openerp.tests import HttpCase
+from openerp.tests import HttpCase, common
 
 
 def get_current_module_name():
@@ -29,6 +29,8 @@ class TestFilter(logging.Filter):
         self.buffer.append(record.__dict__)
 
 
+@common.at_install(False)
+@common.post_install(True)
 class TestWerkzeug404(HttpCase):
     def setUp(self):
         super(TestWerkzeug404, self).setUp()
