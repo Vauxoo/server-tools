@@ -4,14 +4,16 @@
 
 import logging
 import os
+import unittest
 
 from openerp.tests import common
-from openerp.tools.convert import convert_file
+from openerp.tools import convert
 
 _logger = logging.getLogger(__name__)
 MODULE = os.path.basename(
     os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 LOGGER_WORK = 'openerp.addons.%s.models.ir_model_data' % MODULE
+ODOO_PATCHED = hasattr(convert, 'str2bool')
 
 
 class TestFilter(logging.Filter):
@@ -27,7 +29,7 @@ class TestFilter(logging.Filter):
         self.buffer.append(record.__dict__)
 
 
-class TestConvertFile(common.TransactionCase):
+class TestConvertFile(common.TransactionCase, unittest.TestCase):
     """Test convert_file method patched
     """
 
@@ -77,11 +79,12 @@ class TestConvertFile(common.TransactionCase):
         if module is None:
             module = MODULE
         imd_before = self.imd.search([('module', '=', module)])
-        convert_file(self.cr, module, filename, None, kind=kind)
+        convert.convert_file(self.cr, module, filename, None, kind=kind)
         imd_after = self.imd.search([('module', '=', module)])
         imd_new = (imd_after - imd_before)
         if rows_expected is not None:
-            # TODO: Why locally I see rows_expected but travis rows_expected + 1
+            # TODO: Why locally I see rows_expected but
+            # travis rows_expected + 1
             self.assertTrue(len(imd_new) in [rows_expected + 1, rows_expected])
         if msgs_expected is not None:
             logs = self.get_logs()
@@ -178,6 +181,7 @@ class TestConvertFile(common.TransactionCase):
         self.create_unreachable('base.group_user')
         self.create_imd('security/ir.model.access.csv', 'data', 2, 1)
 
+    @unittest.skipIf(ODOO_PATCHED, "Odoo is patched with str2bool")
     def test_80_boolean_without_eval(self):
         """Test a xml data using a field boolean without eval"""
         self.create_imd('demo/partner_demo.xml', 'demo', 0, 1)
