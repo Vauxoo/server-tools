@@ -4,7 +4,7 @@
 
 import logging
 import os
-import unittest
+import unittest2 as unittest
 
 from openerp.tests import common
 from openerp.tools import convert
@@ -29,7 +29,7 @@ class TestFilter(logging.Filter):
         self.buffer.append(record.__dict__)
 
 
-class TestConvertFile(common.TransactionCase, unittest.TestCase):
+class TestConvertFile(common.TransactionCase):
     """Test convert_file method patched
     """
 
@@ -181,7 +181,7 @@ class TestConvertFile(common.TransactionCase, unittest.TestCase):
         self.create_unreachable('base.group_user')
         self.create_imd('security/ir.model.access.csv', 'data', 2, 1)
 
-    @unittest.skipIf(ODOO_PATCHED is True, "Odoo is patched with str2bool")
+    @unittest.skipIf(ODOO_PATCHED, "Odoo is patched with str2bool")
     def test_80_boolean_without_eval(self):
         """Test a xml data using a field boolean without eval"""
         self.create_imd('demo/partner_demo.xml', 'demo', 0, 1)
