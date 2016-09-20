@@ -21,6 +21,9 @@ class TestShowBrokenButton(common.TransactionCase):
         for view in views:
             doc = etree.parse(StringIO(view.arch))
             for button in doc.xpath("//button"):
+                if 'special' in button.attrib:
+                    # Skip "special" button because is not model method.
+                    continue
                 button_type = button.attrib.get('type')
                 # button type 'action' use ref(xml_id) then
                 # we don't need consider it because
