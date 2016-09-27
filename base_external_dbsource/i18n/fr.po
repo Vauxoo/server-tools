@@ -3,16 +3,17 @@
 # * base_external_dbsource
 # 
 # Translators:
-# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2016
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2016
 # Antonio Trueba, 2016
 # bossnm11 <bossnm11@gmail.com>, 2014
+# Carles Antoli <carlesantoli@hotmail.com>, 2015
 # Carles Antoli <carlesantoli@hotmail.com>, 2015
 # Chanseok <kcsgoodboy@gmail.com>, 2014
 # Chul Park <parkchul@nate.com>, 2015
 # David10000 <gameness@naver.com>, 2014
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012-2013
 # Gil <gedwarp@gmail.com>, 2014
-# Hongseob Lee <shevious@gmail.com>, 2015
+# kmooc <shevious@gmail.com>, 2015
 # Hongseob Lee <shevreg@yahoo.com>, 2015
 # jeon <bluerespect@nate.com>, 2014
 # JiyeonLee <leejiyeon00@gmail.com>, 2014
@@ -31,12 +32,13 @@
 # Sujin Lee <sujinlee.me@gmail.com>, 2014
 # Sunah Lim <whitetree70@snu.ac.kr>, 2013
 # Young C. Kim, 2015
+# Young C. Kim, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 14:33+0000\n"
-"PO-Revision-Date: 2016-05-08 15:26+0000\n"
+"POT-Creation-Date: 2016-09-04 01:04+0000\n"
+"PO-Revision-Date: 2016-08-30 21:03+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-server-tools-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -169,7 +171,7 @@ msgstr "Dernière mise à jour le"
 #. module: base_external_dbsource
 #: field:base.external.dbsource,password:0
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #. module: base_external_dbsource
 #: selection:base.external.dbsource,connector:0
