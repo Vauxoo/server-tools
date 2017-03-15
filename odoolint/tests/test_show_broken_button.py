@@ -16,8 +16,9 @@ class TestShowBrokenButton(common.TransactionCase):
     def test_show_broken_button(self):
         """Show a warning of all broken button cases"""
         # TODO: Consider QWEB with button
-        views = self.env['ir.ui.view'].search([('arch', 'ilike', '%<button %'),
-                                               ('type', '!=', 'qweb')])
+        all_views = self.env['ir.ui.view'].search([])
+        views = all_views.filtered(
+            lambda x: '<button ' in x.arch and x.type != 'qweb')
         for view in views:
             doc = etree.parse(StringIO(view.arch))
             for button in doc.xpath("//button"):

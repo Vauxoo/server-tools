@@ -36,7 +36,7 @@ class TestSuperfluousDependencies(common.TransactionCase):
         superfluous_ids = work_module.downstream_dependencies(
             exclude_states=['wo_exc'])
         self.assertTrue(superfluous_ids)
-        superfluous = self.imm.browse(superfluous_ids[0])
+        superfluous = superfluous_ids[0]
         new_module_data = {
             'name': work_module.name + '_superfluous',
             'dependencies_id': [

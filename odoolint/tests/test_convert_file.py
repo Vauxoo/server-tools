@@ -110,7 +110,7 @@ class TestConvertFile(common.TransactionCase):
 
     def test_05_auto_install_dependencies(self):
         """Test get `auto_install` dependencies"""
-        web_rep = self.imm.search([('name', '=', 'website_report'),
+        web_rep = self.imm.search([('name', '=', 'web_editor'),
                                    ('auto_install', '=', True)], limit=1)
         self.assertTrue(web_rep)
         web_rep_deps = web_rep.dependencies_id.mapped('depend_id')
