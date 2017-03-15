@@ -16,7 +16,7 @@ class ModuleDependency(models.Model):
         imm = self.env['ir.module.module']
         superfluous = self.depend_id
         downstream_dependencies = imm.browse(
-            superfluous.downstream_dependencies(exclude_states=['wo_exc']))
+            superfluous.downstream_dependencies(exclude_states=['wo_exc']).ids)
         reason = set(downstream_dependencies.mapped('name')) & \
             set(self.module_id.dependencies_id.mapped('depend_id.name'))
         return (
