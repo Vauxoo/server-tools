@@ -104,34 +104,40 @@ class IrModelData(models.Model):
                 return False
         return True
 
-    @tools.ormcache(skiparg=3)
-    def xmlid_lookup(self, cr, uid, xmlid):
-        res = super(IrModelData, self).xmlid_lookup(cr, uid, xmlid)
-        self._check_data_ref_demo(cr, uid, res[0])
-        self._check_xml_id_unreachable(cr, uid, res[0], xmlid)
+    # TODO: Why skiparg=3 ?
+    # @tools.ormcache(skiparg=3)
+    @api.model
+    @tools.ormcache('xmlid')
+    def xmlid_lookup(self, xmlid):
+        res = super(IrModelData, self).xmlid_lookup(xmlid)
+        record = self.browse([res[0]])
+        record._check_data_ref_demo()
+        record._check_xml_id_unreachable(xmlid)
         return res
 
-    def clear_caches(self):
-        """Inherit to clean ormcache of super method
-        """
-        super(IrModelData, self).xmlid_lookup.clear_cache(self)
-        return super(IrModelData, self).clear_caches()
+    # TODO depreciated method
+    # def clear_caches(self):
+    #     """Inherit to clean ormcache of super method
+    #     """
+    #     super(IrModelData, self).xmlid_lookup.clear_cache(self)
+    #     return super(IrModelData, self).clear_caches()
 
-    def _update(self, cr, uid, model, module, values, xml_id=False, store=True,
-                noupdate=False, mode='init', res_id=False, context=None):
+    @api.model
+    def _update(self, model, module, values, xml_id=False,
+                store=True, noupdate=False, mode='init', res_id=False):
         """Inherit to force use of checks in case where a xml_id.record
         is overwrite from other module.
         """
         if module and xml_id:
             xmlid = module + '.' + xml_id if '.' not in xml_id else xml_id
             try:
-                self.xmlid_lookup(cr, uid, xmlid)
+                self.xmlid_lookup(xmlid)
             except BaseException:
                 # All exceptions are off-target here
                 pass
         if values is None:
             values = {}
-        model_obj = self.pool[model]
+        model_obj = self.env[model]
         for f_name, f_val in values.items():
             if f_name in model_obj._fields and \
                     model_obj._fields[f_name].type == 'boolean' and \
@@ -142,6 +148,5 @@ class IrModelData(models.Model):
                         " in boolean field '%s'. You should use eval='False'.",
                         f_val, f_name)
         return super(IrModelData, self)._update(
-            cr, uid, model=model, module=module, values=values, xml_id=xml_id,
-            store=store, noupdate=noupdate, mode=mode, res_id=res_id,
-            context=context)
+            model=model, module=module, values=values, xml_id=xml_id,
+            store=store, noupdate=noupdate, mode=mode, res_id=res_id)
