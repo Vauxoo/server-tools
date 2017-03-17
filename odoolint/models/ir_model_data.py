@@ -137,16 +137,6 @@ class IrModelData(models.Model):
                 pass
         if values is None:
             values = {}
-        model_obj = self.env[model]
-        for f_name, f_val in values.items():
-            if f_name in model_obj._fields and \
-                    model_obj._fields[f_name].type == 'boolean' and \
-                    isinstance(f_val, basestring):
-                if f_val.lower() in ['0', 'false', 'no', 'off']:
-                    _logger.warning(
-                        "Passing unexpected non boolean value '%s' (is string)"
-                        " in boolean field '%s'. You should use eval='False'.",
-                        f_val, f_name)
         return super(IrModelData, self)._update(
             model=model, module=module, values=values, xml_id=xml_id,
             store=store, noupdate=noupdate, mode=mode, res_id=res_id)
