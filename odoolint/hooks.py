@@ -98,4 +98,4 @@ def patch_werkzeug_logger():
 def post_load():
     _logger.info('Patching odoo.tools.convert.convert_file method')
     monkey_patch_convert_file()
-    patch_werkzeug_logger()
+    # patch_werkzeug_logger()
