@@ -110,7 +110,7 @@ class IrModelData(models.Model):
     @tools.ormcache('xmlid')
     def xmlid_lookup(self, xmlid):
         res = super(IrModelData, self).xmlid_lookup(xmlid)
-        record = self.browse([res[0]])
+        record = self.sudo().browse([res[0]])
         record._check_data_ref_demo()
         record._check_xml_id_unreachable(xmlid)
         return res
