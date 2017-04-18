@@ -35,6 +35,6 @@ Adds user accounts to groups based on rules defined by the administrator.
     ],
     "installable": True,
     "external_dependencies": {
-        'python': ['ldap'],
+        'python': ['python-ldap'],
     },
 }

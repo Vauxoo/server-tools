@@ -42,7 +42,7 @@ object you want to query.
         'auth_ldap',
     ],
     'external_dependencies': {
-        'python': ['ldap'],
+        'python': ['python-ldap'],
     },
     "data": [
         'view/users_ldap.xml',
