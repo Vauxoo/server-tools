@@ -5,7 +5,10 @@ import sys
 import platform
 import cgi
 import socket
-import pip
+try:
+    import pip
+except ImportError as error:
+    raise error
 
 
 def pyinfo():
@@ -246,6 +249,7 @@ def section_copyright():
     html = '<tr class="v"><td>%s</td></tr>' % sys.copyright.replace(
         '\n\n', '<br>').replace('\r\n', '<br />').replace('(c)', '&copy;')
     return table(html)
+
 
 optional_modules_list = [
     'Cookie',

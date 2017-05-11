@@ -3,6 +3,7 @@
 import json
 from openerp import models, api
 
+
 class module_dependencies_view(models.Model):
     _inherit = 'ir.module.module'
     _fields_read = [

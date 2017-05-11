@@ -7,8 +7,8 @@
 
 {
     "name": "Instance Instrospection",
-    "version": "1.5",
-    "author": "Vauxoo",
+    "version": "9.0.0.0.0",
+    "author": "Vauxoo, Odoo Community Association (OCA)",
     "category": "Tecnhical Features",
     "website": "http://www.vauxoo.com/",
     "license": "AGPL-3",
@@ -21,5 +21,10 @@
         'views/instance_introspection_view.xml',
         'views/instance_view.xml',
     ],
+    "external_dependencies": {
+        "python": [
+            "pip"
+        ],
+    },
     "installable": True,
 }
