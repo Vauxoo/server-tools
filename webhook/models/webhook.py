@@ -191,7 +191,9 @@ class Webhook(models.Model):
         self.ensure_one()
         for rec in self:
             event = rec.process_python_code(
-                rec.python_code_get_event, request)[0]
+                rec.python_code_get_event, request)
+            if isinstance(event, list):
+                event = event[0]
             if not event:
                 raise exceptions.ValidationError(_(
                     'event is not defined'))
