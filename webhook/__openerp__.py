@@ -27,6 +27,7 @@
         ],
     },
     'data': [
+        'security/ir.model.access.csv',
         'views/webhook_views.xml',
         'data/webhook_data.xml',
     ],
