@@ -17,17 +17,28 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[auto_backup](auto_backup/) | 10.0.1.0.0 | Backups database
-[base_external_dbsource](base_external_dbsource/) | 10.0.1.0.1 | External Database Sources
+[auditlog](auditlog/) | 10.0.1.0.0 | Audit Log
+[auto_backup](auto_backup/) | 10.0.1.0.1 | Backups database
+[base_external_dbsource](base_external_dbsource/) | 10.0.2.0.0 | External Database Sources
+[base_external_dbsource_firebird](base_external_dbsource_firebird/) | 10.0.1.0.0 | External Database Source - Firebird
+[base_external_dbsource_mssql](base_external_dbsource_mssql/) | 10.0.1.0.0 | External Database Source - MSSQL
+[base_external_dbsource_mysql](base_external_dbsource_mysql/) | 10.0.1.0.0 | External Database Source - MySQL
+[base_external_dbsource_odbc](base_external_dbsource_odbc/) | 10.0.1.0.0 | External Database Source - ODBC
+[base_external_dbsource_oracle](base_external_dbsource_oracle/) | 10.0.1.0.0 | External Database Source - Oracle
+[base_external_dbsource_sqlite](base_external_dbsource_sqlite/) | 10.0.1.0.0 | External Database Source - SQLite
+[base_kanban_stage](base_kanban_stage/) | 10.0.1.0.0 | Provides stage model and abstract logic for inheritance
 [base_multi_image](base_multi_image/) | 10.0.1.0.0 | Allow multiple images for database objects
 [base_suspend_security](base_suspend_security/) | 10.0.1.0.0 | Suspend security checks for a call
 [base_technical_features](base_technical_features/) | 10.0.1.0.0 | Access to technical features without activating debug mode
 [base_user_gravatar](base_user_gravatar/) | 10.0.1.0.0 | Synchronize Gravatar Image
+[base_user_role](base_user_role/) | 10.0.1.0.0 | User roles
 [date_range](date_range/) | 10.0.1.0.0 | Manage all kind of date range
 [dbfilter_from_header](dbfilter_from_header/) | 10.0.1.0.0 | Filter databases with HTTP headers
 [disable_odoo_online](disable_odoo_online/) | 10.0.1.0.0 | Remove odoo.com Bindings
+[mass_editing](mass_editing/) | 10.0.1.0.0 | Mass Editing
 [module_prototyper](module_prototyper/) | 10.0.1.0.0 | Prototype your module.
 [password_security](password_security/) | 10.0.1.0.1 | Allow admin to set password security requirements.
+[scheduler_error_mailer](scheduler_error_mailer/) | 10.0.1.0.0 | Scheduler Error Mailer
 [users_ldap_mail](users_ldap_mail/) | 10.0.1.0.0 | LDAP mapping for user name and e-mail
 [users_ldap_populate](users_ldap_populate/) | 10.0.1.0.0 | LDAP Populate
 
@@ -37,7 +48,6 @@ addon | version | summary
 --- | --- | ---
 [admin_technical_features](admin_technical_features/) | 9.0.0.1.0 (unported) | Checks the technical features box for admin user.
 [attachment_base_synchronize](attachment_base_synchronize/) | 9.0.1.0.0 (unported) | Attachment Base Synchronize
-[auditlog](auditlog/) | 8.0.1.0.0 (unported) | Audit Log
 [auth_admin_passkey](auth_admin_passkey/) | 8.0.2.1.1 (unported) | Authentification - Admin Passkey
 [auth_dynamic_groups](auth_dynamic_groups/) | 8.0.1.0.0 (unported) | Have membership conditions for certain groups
 [auth_from_http_basic](auth_from_http_basic/) | 1.0 (unported) | Authenticate via HTTP basic authentication
@@ -62,12 +72,10 @@ addon | version | summary
 [language_path_mixin](language_path_mixin/) | 8.0.1.0.0 (unported) | Setting the partner's language in RML reports
 [letsencrypt](letsencrypt/) | 9.0.1.0.0 (unported) | Request SSL certificates from letsencrypt.org
 [mail_environment](mail_environment/) | 9.0.1.0.0 (unported) | Configure mail servers with server_environment_files
-[mass_editing](mass_editing/) | 9.0.1.0.0 (unported) | Mass Editing
 [menu_technical_info](menu_technical_info/) | 9.0.1.0.0 (unported) | Fast way to look up technical info about menu item.
 [mgmtsystem_kpi](mgmtsystem_kpi/) | 7.0.1.1.1 (unported) | Key Performance Indicator
 [qweb_usertime](qweb_usertime/) | 8.0.1.0.0 (unported) | Add user time rendering support in QWeb
 [res_config_settings_enterprise_remove](res_config_settings_enterprise_remove/) | 9.0.1.0.0 (unported) | Remove fields in all settings views marked as enterprise
-[scheduler_error_mailer](scheduler_error_mailer/) | 9.0.1.0.0 (unported) | Scheduler Error Mailer
 [security_protector](security_protector/) | 0.1 (unported) | Security protector
 [server_env_base_external_referentials](server_env_base_external_referentials/) | 1.0 (unported) | Server environment for base_external_referential
 [server_environment](server_environment/) | 9.0.1.2.0 (unported) | move some configurations out of the database
