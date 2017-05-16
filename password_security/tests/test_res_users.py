@@ -146,3 +146,15 @@ class TestResUsers(TransactionCase):
         self.assertEqual(
             True, rec_id._validate_pass_reset(),
         )
+
+    def test_set_password_auth_crypt(self):
+        """Users password must be updated during a module update or install"""
+        rec_id = self._new_record()
+        password_new = 'QWE123$%^asd'
+        rec_id.write({'password': password_new})
+        password_new = '123QWE$%^asd'
+        rec_id.write({'password': password_new})
+        self.model_obj.init()
+        self.assertEqual(
+            3, len(rec_id.password_history_ids),
+        )

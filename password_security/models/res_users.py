@@ -130,8 +130,14 @@ class ResUsers(models.Model):
         :raises: PassError on reused password
         """
         crypt = self._crypt_context()
+        # TODO: Check if this is the correct way to avoid validating the
+        # password_history when updating the auth_crypt module
+        if self._context.get('todo', False):
+            return super(ResUsers, self)._set_password(password)
         for rec_id in self:
             recent_passes = rec_id.company_id.password_history
+            if not recent_passes:
+                continue
             if recent_passes < 0:
                 recent_passes = rec_id.password_history_ids
             else:
@@ -145,7 +151,7 @@ class ResUsers(models.Model):
                     _('Cannot use the most recent %d passwords') %
                     rec_id.company_id.password_history
                 )
-        super(ResUsers, self)._set_password(password)
+        return super(ResUsers, self)._set_password(password)
 
     @api.multi
     def _set_encrypted_password(self, encrypted):
