@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_block_indexing" inherit_id="website.layout">
+        <xpath expr="//meta" position="after">
+            <meta name="robots" content="noindex"/>
+            <meta name="googlebot" content="noindex"/>
+        </xpath>
+    </template>
+</odoo>

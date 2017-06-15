@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_res_users_pass_history,access_res_users_pass_history,model_res_users_pass_history,base.group_user,1,0,1,0
+access_res_users_pass_history_group_erp_manager,access_res_users_pass_history_group_erp_manager,model_res_users_pass_history,base.group_erp_manager,1,0,1,0
+access_ir_sequence_group_erp_manager,access_ir_sequence_group_erp_manager,base.model_ir_sequence,base.group_erp_manager,1,1,0,0
+
