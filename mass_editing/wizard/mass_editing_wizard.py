@@ -4,8 +4,8 @@
 
 from lxml import etree
 
-import openerp.tools as tools
-from openerp import api, models
+import odoo.tools as tools
+from odoo import api, models
 
 
 class MassEditingWizard(models.TransientModel):
@@ -207,6 +207,9 @@ class MassEditingWizard(models.TransientModel):
                                       field.name + "','=','remove')]}"),
                             'colspan': '4',
                         })
+            # Patch fields with required extra data
+            for field in all_fields.values():
+                field.setdefault("views", {})
             etree.SubElement(xml_form, 'separator', {
                 'string': '',
                 'colspan': '6',
@@ -256,3 +259,16 @@ class MassEditingWizard(models.TransientModel):
     @api.multi
     def action_apply(self):
         return {'type': 'ir.actions.act_window_close'}
+
+    def read(self, fields, load='_classic_read'):
+        """ Without this call, dynamic fields build by fields_view_get()
+            generate a log warning, i.e.:
+            odoo.models:mass.editing.wizard.read() with unknown field 'myfield'
+            odoo.models:mass.editing.wizard.read()
+                with unknown field 'selection__myfield'
+        """
+        real_fields = fields
+        if fields:
+            # We remove fields which are not in _fields
+            real_fields = [x for x in fields if x in self._fields]
+        return super(MassEditingWizard, self).read(real_fields, load=load)

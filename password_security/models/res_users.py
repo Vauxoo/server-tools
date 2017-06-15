@@ -48,13 +48,13 @@ class ResUsers(models.Model):
         company_id = self.company_id
         message = []
         if company_id.password_lower:
-            message.append('* ' + _('Lowercase letter'))
+            message.append('\n* ' + _('Lowercase letter'))
         if company_id.password_upper:
-            message.append('* ' + _('Uppercase letter'))
+            message.append('\n* ' + _('Uppercase letter'))
         if company_id.password_numeric:
-            message.append('* ' + _('Numeric digit'))
+            message.append('\n* ' + _('Numeric digit'))
         if company_id.password_special:
-            message.append('* ' + _('Special character'))
+            message.append('\n* ' + _('Special character'))
         if len(message):
             message = [_('Must contain the following:')] + message
         if company_id.password_length:
@@ -81,6 +81,8 @@ class ResUsers(models.Model):
             password_regex.append(r'(?=.*?\W)')
         password_regex.append('.{%d,}$' % company_id.password_length)
         if not re.search(''.join(password_regex), password):
+            self.env.cr.rollback()
+            self.invalidate_cache()
             raise PassError(_(self.password_match_message()))
         return True
 
@@ -117,6 +119,8 @@ class ResUsers(models.Model):
             )
             delta = timedelta(hours=pass_min)
             if write_date + delta > datetime.now():
+                self.env.cr.rollback()
+                self.invalidate_cache()
                 raise PassError(
                     _('Passwords can only be reset every %d hour(s). '
                       'Please contact an administrator for assistance.') %
@@ -138,9 +142,10 @@ class ResUsers(models.Model):
                 recent_passes = rec_id.password_history_ids[
                     0:recent_passes-1
                 ]
-            if len(recent_passes.filtered(
-                lambda r: crypt.verify(password, r.password_crypt)
-            )):
+            if recent_passes.filtered(
+                    lambda r: crypt.verify(password, r.password_crypt)):
+                self.env.cr.rollback()
+                self.invalidate_cache()
                 raise PassError(
                     _('Cannot use the most recent %d passwords') %
                     rec_id.company_id.password_history

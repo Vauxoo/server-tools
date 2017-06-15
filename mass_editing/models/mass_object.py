@@ -2,15 +2,14 @@
 # © 2016 Serpent Consulting Services Pvt. Ltd. (support@serpentcs.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.exceptions import UserError
-from openerp import api, fields, models, _
+from odoo import api, fields, models, _
 
 
 class MassObject(models.Model):
     _name = "mass.object"
     _description = "Mass Editing Object"
 
-    name = fields.Char(required=True, index=1)
+    name = fields.Char('Name', required=True, index=1)
     model_id = fields.Many2one('ir.model', 'Model', required=True,
                                help="Model is used for Selecting Fields. "
                                     "This is editable until Sidebar menu "
@@ -66,7 +65,9 @@ class MassObject(models.Model):
             'view_mode': 'form, tree',
             'target': 'new',
         }).id
-        vals['ref_ir_value_id'] = self.env['ir.values'].create({
+        # We make sudo as any user with rights in this model should be able
+        # to create the action, not only admin
+        vals['ref_ir_value_id'] = self.env['ir.values'].sudo().create({
             'name': button_name,
             'model': src_obj,
             'key2': 'client_action_multi',
@@ -78,14 +79,10 @@ class MassObject(models.Model):
 
     @api.multi
     def unlink_action(self):
-        for mass in self:
-            try:
-                if mass.ref_ir_act_window_id:
-                    mass.ref_ir_act_window_id.unlink()
-                if mass.ref_ir_value_id:
-                    mass.ref_ir_value_id.unlink()
-            except:
-                raise UserError(_("Deletion of the action record failed."))
+        # We make sudo as any user with rights in this model should be able
+        # to delete the action, not only admin
+        self.mapped('ref_ir_act_window_id').sudo().unlink()
+        self.mapped('ref_ir_value_id').sudo().unlink()
         return True
 
     @api.multi

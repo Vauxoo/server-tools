@@ -126,7 +126,9 @@ class DbBackup(models.Model):
             # Just open and close the connection
             with self.sftp_connection():
                 raise exceptions.Warning(_("Connection Test Succeeded!"))
-        except (pysftp.CredentialException, pysftp.ConnectionException):
+        except (pysftp.CredentialException,
+                pysftp.ConnectionException,
+                pysftp.SSHException):
             _logger.info("Connection Test Failed!", exc_info=True)
             raise exceptions.Warning(_("Connection Test Failed!"))
 
@@ -205,7 +207,10 @@ class DbBackup(models.Model):
                 "<p>%s</p><pre>%s</pre>" % (
                     _("Database backup failed."),
                     escaped_tb),
-                subtype=self.env.ref("auto_backup.failure"))
+                subtype=self.env.ref(
+                    "auto_backup.mail_message_subtype_failure"
+                ),
+            )
         else:
             _logger.info("Database backup succeeded: %s", self.name)
             self.message_post(_("Database backup succeeded."))
@@ -229,7 +234,7 @@ class DbBackup(models.Model):
                         for name in remote.listdir(rec.folder):
                             if (name.endswith(".dump.zip") and
                                     os.path.basename(name) < oldest):
-                                remote.unlink(name)
+                                remote.unlink('%s/%s' % (rec.folder, name))
 
     @api.multi
     @contextmanager
