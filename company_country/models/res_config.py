@@ -14,6 +14,8 @@ class CountryCompanyConfigSettings(models.TransientModel):
     def load_country_company(self, country_code=None):
         if not country_code:
             country_code = os.environ.get('COUNTRY')
+        if country_code == "":
+            return
         if not country_code:
             raise ValidationError(
                 _('Error COUNTRY environment variable with country code'
