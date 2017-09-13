@@ -6,7 +6,7 @@ import re
 
 from datetime import datetime, timedelta
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, fields, models, _
 
 from ..exceptions import PassError
 
@@ -171,5 +171,4 @@ class ResUsers(models.Model):
         if not self:
             return False
         return super(ResUsers, self)._is_superuser()
-
-    ############ End of dirty fix ###############
+    # End of dirty fix
