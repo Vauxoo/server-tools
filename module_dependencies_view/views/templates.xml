@@ -1,0 +1,86 @@
+<openerp>
+    <data>
+        <template id="module_assets" name="Assets for Module Viewer">
+            <head>
+                <link rel="stylesheet" href="/web/static/lib/nvd3/nv.d3.css"/>
+                <link rel="stylesheet" href="/module_dependencies_view/static/src/css/module.css"/>
+                <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
+                <script type="text/javascript" src="/web/static/lib/nvd3/d3.v3.js"></script>
+                <script type="text/javascript" src="/web/static/lib/jquery/jquery.js"></script>
+                <script type="text/javascript" src="/web/static/lib/bootstrap/js/carousel.js"></script>
+            </head>
+        </template>
+        <template id="module_layout" name="General Layout to watch module info">
+            &lt;!DOCTYPE html&gt;
+            <html>
+                <t t-call="module_dependencies_view.module_assets"/>
+            <body>
+                <t t-call="module_dependencies_view.page_header"/>
+                <t t-raw="0"/>
+                <t t-call="module_dependencies_view.page_footer"/>
+            </body>
+            </html>
+        </template>
+        <template id="page_footer" name="Module Graph Tree View">
+            <footer class="footer">
+                <div class="container">
+                    <p class="text-muted">Module built and planned by <a href="https://www.vauxoo.com">Vauxoo</a></p>
+                </div>
+            </footer>
+        </template>
+        <template id="page_header" name="Page Header">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-3 col-xs-4 text-center">
+                        <a t-attf-href="/web#return_label=Module&amp;view_type=form&amp;model=#{object._name}&amp;id=#{object.id}&amp;action=#{'base.open_module_tree'}">
+                            <img t-att-src="object.icon" width="30%" height="auto"/>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-xs-8 text-center">
+                        <h1>
+                            <a t-attf-href="/web#return_label=Module&amp;view_type=form&amp;model=#{object._name}&amp;id=#{object.id}&amp;action=#{'base.open_module_tree'}">
+                                <t t-esc="object.display_name"/>
+                            </a><br/>
+                            <small>
+                                by <t t-esc="object.author"/>
+                            </small>
+                        </h1>
+                    </div>
+                    <div class="col-md-3 col-xs-12 text-center">
+                        <span class="text-muted">Computed in: <b t-esc="computed.total_seconds()"></b> secs</span><br/>
+                        <span class="text-muted">Technical Name: <b t-esc="object.name"/></span>
+                        <span><a class="btn btn-link btn-xs"
+                            t-att-href="object.website"
+                            target="NEW">Module Website</a></span>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="module" name="Module Full View">
+            <t t-call="module_dependencies_view.module_layout">
+                <div class="container-fluid">
+                    <div class="row">
+                        <t t-call="module_dependencies_view.graph"/>
+                    </div>
+                </div>
+                <script src="/module_dependencies_view/static/src/js/module.js" type="text/javascript"></script>
+            </t>
+        </template>
+        <template id="module_dependencies_view.cluster_dendrogram" name="Module Full View">
+            <t t-call="module_dependencies_view.module_layout">
+                <div class="container-fluid">
+                    <div class="row">
+                        <t t-call="module_dependencies_view.graph"/>
+                    </div>
+                </div>
+                <script src="/module_dependencies_view/static/src/js/cluster_dendrogram.js" type="text/javascript"></script>
+            </t>
+        </template>
+        <template id="module_dependencies_view.graph" name="Tree Graph">
+            <div id="tree"
+                 t-att-data-id="object.id"
+                 t-att-data-name="object.name"
+                 t-att-data-depends="tree"/>
+        </template>
+    </data>
+</openerp>

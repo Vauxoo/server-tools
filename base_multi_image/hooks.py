@@ -8,6 +8,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+# pylint: disable=E8103
 def pre_init_hook_for_submodules(cr, model, field):
     """Moves images from single to multi mode.
 

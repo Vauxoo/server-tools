@@ -4,14 +4,13 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
-# Fernando Lara <gennesis45@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-22 00:55+0000\n"
-"PO-Revision-Date: 2017-02-22 00:55+0000\n"
-"Last-Translator: Fernando Lara <gennesis45@gmail.com>, 2017\n"
+"POT-Creation-Date: 2017-05-17 21:08+0000\n"
+"PO-Revision-Date: 2017-05-17 21:08+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: mass_editing
-#: code:addons/mass_editing/models/mass_object.py:100
+#: code:addons/mass_editing/models/mass_object.py:97
 #, python-format
 msgid "%s (copy)"
 msgstr "%s (copia)"
@@ -63,6 +62,7 @@ msgstr ""
 "abrir un asistente de composición"
 
 #. module: mass_editing
+#: model:ir.model,name:mass_editing.model_ir_model_fields
 #: model:ir.model.fields,field_description:mass_editing.field_mass_object_field_ids
 #: model:ir.ui.view,arch_db:mass_editing.view_mass_object_form
 msgid "Fields"
@@ -100,7 +100,7 @@ msgid "Mass Editing"
 msgstr "Edición masiva"
 
 #. module: mass_editing
-#: code:addons/mass_editing/models/mass_object.py:58
+#: code:addons/mass_editing/models/mass_object.py:57
 #, python-format
 msgid "Mass Editing (%s)"
 msgstr "Edición Masiva (%s)"
@@ -116,7 +116,7 @@ msgid "Model"
 msgstr "Modelo"
 
 #. module: mass_editing
-#: model:ir.model.fields,field_description:mass_editing.field_mass_object_model_ids
+#: model:ir.model.fields,field_description:mass_editing.field_mass_object_model_list
 msgid "Model List"
 msgstr "Lista de modelos"
 
@@ -135,7 +135,7 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: mass_editing
-#: code:addons/mass_editing/models/mass_object.py:34
+#: code:addons/mass_editing/models/mass_object.py:33
 #: sql_constraint:mass.object:0
 #, python-format
 msgid "Name must be unique!"

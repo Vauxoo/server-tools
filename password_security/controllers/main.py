@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 # Copyright 2015 LasLabs Inc.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
-
+#
 import operator
 
 from odoo import http
 from odoo.http import request
 try:
-    from odoo.addons.website.controllers.main import AuthSignupHome as SignupHome
+    from odoo.addons.website.controllers.main import AuthSignupHome
 except ImportError:
-    from odoo.addons.auth_signup.controllers.main import AuthSignupHome as SignupHome
+    from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 from odoo.addons.web.controllers.main import ensure_db, Session
 
 from ..exceptions import PassError
@@ -23,16 +23,16 @@ class PasswordSecuritySession(Session):
             dict(map(operator.itemgetter('name', 'value'), fields))
         )
         user_id = request.env.user
-        user_id.check_password(new_password)
+        user_id._check_password(new_password)
         return super(PasswordSecuritySession, self).change_password(fields)
 
 
-class PasswordSecurityHome(SignupHome):
+class PasswordSecurityHome(AuthSignupHome):
 
     def do_signup(self, qcontext):
         password = qcontext.get('password')
         user_id = request.env.user
-        user_id.check_password(password)
+        user_id._check_password(password)
         return super(PasswordSecurityHome, self).do_signup(qcontext)
 
     @http.route()

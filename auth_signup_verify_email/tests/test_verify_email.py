@@ -8,6 +8,7 @@ from openerp import _
 from openerp.tests.common import HttpCase
 
 
+# pylint: disable=E8102
 class UICase(HttpCase):
     def setUp(self):
         super(UICase, self).setUp()

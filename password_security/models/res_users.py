@@ -6,7 +6,7 @@ import re
 
 from datetime import datetime, timedelta
 
-from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo import api, fields, models, _
 
 from ..exceptions import PassError
 
@@ -38,7 +38,7 @@ class ResUsers(models.Model):
     @api.multi
     def write(self, vals):
         if vals.get('password'):
-            self.check_password(vals['password'])
+            self._check_password(vals['password'])
             vals['password_write_date'] = fields.Datetime.now()
         return super(ResUsers, self).write(vals)
 
@@ -48,14 +48,14 @@ class ResUsers(models.Model):
         company_id = self.company_id
         message = []
         if company_id.password_lower:
-            message.append('* ' + _('Lowercase letter'))
+            message.append('\n* ' + _('Lowercase letter'))
         if company_id.password_upper:
-            message.append('* ' + _('Uppercase letter'))
+            message.append('\n* ' + _('Uppercase letter'))
         if company_id.password_numeric:
-            message.append('* ' + _('Numeric digit'))
+            message.append('\n* ' + _('Numeric digit'))
         if company_id.password_special:
-            message.append('* ' + _('Special character'))
-        if len(message):
+            message.append('\n* ' + _('Special character'))
+        if message:
             message = [_('Must contain the following:')] + message
         if company_id.password_length:
             message = [
@@ -65,7 +65,13 @@ class ResUsers(models.Model):
         return '\r'.join(message)
 
     @api.multi
-    def check_password(self, password):
+    def _check_password(self, password):
+        self._check_password_rules(password)
+        self._check_password_history(password)
+        return True
+
+    @api.multi
+    def _check_password_rules(self, password):
         self.ensure_one()
         if not password:
             return True
@@ -81,7 +87,7 @@ class ResUsers(models.Model):
             password_regex.append(r'(?=.*?\W)')
         password_regex.append('.{%d,}$' % company_id.password_length)
         if not re.search(''.join(password_regex), password):
-            raise PassError(_(self.password_match_message()))
+            raise PassError(self.password_match_message())
         return True
 
     @api.multi
@@ -125,7 +131,7 @@ class ResUsers(models.Model):
         return True
 
     @api.multi
-    def _set_password(self, password):
+    def _check_password_history(self, password):
         """ It validates proposed password against existing history
         :raises: PassError on reused password
         """
@@ -138,14 +144,12 @@ class ResUsers(models.Model):
                 recent_passes = rec_id.password_history_ids[
                     0:recent_passes-1
                 ]
-            if len(recent_passes.filtered(
-                lambda r: crypt.verify(password, r.password_crypt)
-            )):
+            if recent_passes.filtered(
+                    lambda r: crypt.verify(password, r.password_crypt)):
                 raise PassError(
                     _('Cannot use the most recent %d passwords') %
                     rec_id.company_id.password_history
                 )
-        super(ResUsers, self)._set_password(password)
 
     @api.multi
     def _set_encrypted_password(self, encrypted):
@@ -172,4 +176,4 @@ class ResUsers(models.Model):
             return False
         return super(ResUsers, self)._is_superuser()
 
-    ############ End of dirty fix ###############
+    # ########### End of dirty fix ###############
