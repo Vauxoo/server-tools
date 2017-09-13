@@ -7,11 +7,11 @@ import operator
 from odoo import http
 from odoo.http import request
 try:
-    from odoo.addons.website.controllers.main import AuthSignupHome as SignupHome
+    from odoo.addons.website.controllers.main import AuthSignupHome
 except ImportError:
-    from odoo.addons.auth_signup.controllers.main import AuthSignupHome as SignupHome
-from odoo.addons.web.controllers.main import ensure_db, Session
+    from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 
+from odoo.addons.web.controllers.main import ensure_db, Session
 from ..exceptions import PassError
 
 
@@ -27,7 +27,7 @@ class PasswordSecuritySession(Session):
         return super(PasswordSecuritySession, self).change_password(fields)
 
 
-class PasswordSecurityHome(SignupHome):
+class PasswordSecurityHome(AuthSignupHome):
 
     def do_signup(self, qcontext):
         password = qcontext.get('password')
