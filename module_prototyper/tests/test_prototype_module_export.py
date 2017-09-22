@@ -21,7 +21,7 @@
 ##############################################################################
 from odoo.tests import common
 import zipfile
-import StringIO
+import io
 
 
 class TestPrototypeModuleExport(common.TransactionCase):
@@ -76,5 +76,5 @@ class TestPrototypeModuleExport(common.TransactionCase):
         )
 
         self.assertIsInstance(
-            ret.stringIO, StringIO.StringIO
+            ret.stringIO, io.StringIO
         )
