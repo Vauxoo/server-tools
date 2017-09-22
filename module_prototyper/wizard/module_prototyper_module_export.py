@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-import StringIO
+import io
 import base64
 import os
 import zipfile
@@ -57,7 +57,7 @@ class PrototypeModuleExport(models.TransientModel):
         Export a zip file containing the module based on the information
         provided in the prototype, using the templates chosen in the wizard.
         """
-        if isinstance(ids, (int, long)):
+        if isinstance(ids, int):
             ids = [ids]
         wizard = self.browse(ids)
 
@@ -106,7 +106,7 @@ class PrototypeModuleExport(models.TransientModel):
         :return: tuple (zip_file, stringIO)
         """
         zip_details = namedtuple('Zip_details', ['zip_file', 'stringIO'])
-        out = StringIO.StringIO()
+        out = io.StringIO()
 
         with zipfile.ZipFile(out, 'w') as target:
             for prototype in prototypes:
@@ -121,7 +121,7 @@ class PrototypeModuleExport(models.TransientModel):
                 # ready to be saved by the user.
                 file_details = prototype.generate_files()
                 for filename, file_content in file_details:
-                    if isinstance(file_content, unicode):
+                    if isinstance(file_content, str):
                         file_content = file_content.encode('utf-8')
                     # Prefix all names with module technical name
                     filename = os.path.join(prototype.name, filename)

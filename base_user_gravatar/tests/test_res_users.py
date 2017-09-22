@@ -2,10 +2,10 @@
 # © 2016-TODAY LasLabs, Inc. [https://laslabs.com]
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
-from odoo.addons.base_user_gravatar.models.res_users import ResUsers
 import mock
 import hashlib
+from odoo.tests.common import TransactionCase
+from odoo.addons.base_user_gravatar.models.res_users import ResUsers
 
 
 MODULE_LOCATION = 'openerp.addons.base_user_gravatar.models.res_users'
@@ -31,7 +31,7 @@ class TestResUsers(TransactionCase):
         self.vals['partner_id'] = partner_id.id
         return self.env['res.users'].create(self.vals)
 
-    @mock.patch('%s.urllib2' % MODULE_LOCATION)
+    @mock.patch('%s.requests' % MODULE_LOCATION)
     def test_get_gravatar_base64_opens_correct_uri(self, mk, ):
         """ Test that gravatar is pinged for image """
         self.model_obj._get_gravatar_base64(self.partner_vals['email'])
@@ -39,7 +39,7 @@ class TestResUsers(TransactionCase):
         mk.urlopen.assert_called_once_with(self.url.format(expect))
 
     @mock.patch('%s.base64' % MODULE_LOCATION)
-    @mock.patch('%s.urllib2' % MODULE_LOCATION)
+    @mock.patch('%s.requests' % MODULE_LOCATION)
     def test_get_gravatar_base64_returns_encoded_image(self, mk, b64_mk, ):
         """ Test that image result is read """
         expect = 'Expect'
