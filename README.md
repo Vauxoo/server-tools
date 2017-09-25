@@ -3,8 +3,8 @@
 [![Coverage Status](https://coveralls.io/repos/OCA/server-tools/badge.png?branch=10.0)](https://coveralls.io/r/OCA/server-tools?branch=10.0)
 [![Code Climate](https://codeclimate.com/github/OCA/server-tools/badges/gpa.svg)](https://codeclimate.com/github/OCA/server-tools)
 
-Server Environment And Tools
-============================
+Server Environment And  Tools
+=============================
 
 This project aim to deal with modules related to manage Odoo server environment and provide useful tools. You'll find modules that:
 
