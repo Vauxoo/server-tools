@@ -2,9 +2,6 @@ language: python
 sudo: false
 cache: pip
 
-python:
-  - "3.4"
-
 addons:
   postgresql: "9.2" # minimal postgresql version for the daterange method
   apt:
@@ -21,22 +18,27 @@ env:
   - secure: Z06mZCN+Hm3myqHSOZpOOk1pd4oq1epAWZv6m9OX2bTNHbhyOVOGK6JWWsnDm/3DUCN1ZeLtSGOl9bvQfMa8ahQHA80MkLL16YlTvQV59Lh+L2gAYmxX+ogJCJgeQSVAXlGLscgkADCu/HzDlmatrDeROMtULn5i23j2qcyUNyM=
   - COUNTRY="MX"
 
-  matrix:
-  - LINT_CHECK="1"
-  - TRANSIFEX="1"
-  - TESTS="1" ODOO_REPO="odoo/odoo"
-  - TESTS="1" ODOO_REPO="OCA/OCB"
-
-virtualenv:
-  system_site_packages: true
+matrix:
+  include:
+    - python: 2.7
+      env:
+        LINT_CHECK="1"
+    - python: 3.4
+      env:
+        TRANSIFEX="1"
+    - python: 3.4
+      env:
+        TESTS="1" ODOO_REPO="odoo/odoo"
+    - python: 3.4
+      env:
+        TESTS="1" ODOO_REPO="OCA/OCB"
 
 install:
   - git clone --single-branch --depth=1 https://github.com/vauxoo-dev/maintainer-quality-tools.git -b master-vx-support-python3-jesuszapata ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
-  # Install libraries that require specific development headers, but not during lint test
-  - if ! [ "$LINT_CHECK" = "1" ]; then pip uninstall -y translate-toolkit && pip install -I translate-toolkit==2.2.5; fi
-  - if ! [ "$LINT_CHECK" = "1" ]; then pip install pymssql MySQL-python pyodbc; fi
+  # Install libraries that require specific development headers, but not during lint test ## python3 fail
+  #- if ! [ "$LINT_CHECK" = "1" ]; then pip install pymssql MySQL-python pyodbc; fi
   - printf '[options]\n\nrunning_env = dev\n' > ${HOME}/.openerp_serverrc
   - ln -s ${TRAVIS_BUILD_DIR}/server_environment_files_sample ${TRAVIS_BUILD_DIR}/server_environment_files
 script:
