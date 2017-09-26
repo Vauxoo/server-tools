@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import os
 import logging
-import urllib2
+import requests
 import urlparse
 import subprocess
 import tempfile
@@ -152,13 +152,13 @@ class Letsencrypt(models.AbstractModel):
         with open(os.path.join(get_data_dir(), '%s.crt' % domain), 'w')\
                 as crt:
             crt.write(crt_text)
-            chain_cert = urllib2.urlopen(
+            chain_cert = requests.get(
                 self.env['ir.config_parameter'].get_param(
                     'letsencrypt.chain_certificate_address',
                     'https://letsencrypt.org/certs/'
                     'lets-encrypt-x3-cross-signed.pem')
             )
-            crt.write(chain_cert.read())
+            crt.write(chain_cert.content)
             chain_cert.close()
             _logger.info('wrote %s', crt.name)
         reload_cmd = self.env['ir.config_parameter'].get_param(
