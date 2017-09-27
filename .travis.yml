@@ -34,7 +34,7 @@ matrix:
         TESTS="1" ODOO_REPO="OCA/OCB"
 
 install:
-  - git clone --single-branch --depth=1 https://github.com/vauxoo-dev/maintainer-quality-tools.git -b master-vx-support-python3-jesuszapata ${HOME}/maintainer-quality-tools
+  - git clone --single-branch --depth=1 https://github.com/Vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
   # Install libraries that require specific development headers, but not during lint test ## The following package is not complatibility to python3
