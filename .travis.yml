@@ -3,7 +3,7 @@ sudo: false
 cache: pip
 
 python:
-  - "2.7"
+  - "3.4"
 
 addons:
   postgresql: "9.2" # minimal postgresql version for the daterange method
@@ -16,7 +16,7 @@ addons:
 
 env:
   global:
-  - VERSION="10.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
+  - VERSION="saas-18" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='transbot@odoo-community.org'
   - secure: Z06mZCN+Hm3myqHSOZpOOk1pd4oq1epAWZv6m9OX2bTNHbhyOVOGK6JWWsnDm/3DUCN1ZeLtSGOl9bvQfMa8ahQHA80MkLL16YlTvQV59Lh+L2gAYmxX+ogJCJgeQSVAXlGLscgkADCu/HzDlmatrDeROMtULn5i23j2qcyUNyM=
   - COUNTRY="MX"
