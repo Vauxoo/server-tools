@@ -247,7 +247,7 @@ class AuditlogRule(models.Model):
             # Old API
             if args and isinstance(args[0], sql_db.Cursor):
                 cr, uid, ids = args[0], args[1], args[2]
-                if isinstance(ids, (int, long)):
+                if isinstance(ids, (int, )):
                     ids = [ids]
                 # If the call came from auditlog itself, skip logging:
                 # avoid logs on `read` produced by auditlog during internal
