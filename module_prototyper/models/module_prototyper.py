@@ -189,18 +189,6 @@ class ModulePrototyper(models.Model):
         help=('Enter the list of reports that you have created and '
               'want to export in this module.')
     )
-    activity_ids = fields.Many2many(
-        'workflow.activity', 'prototype_wf_activity_rel',
-        'module_prototyper_id', 'activity_id', 'Activities',
-        help=('Enter the list of workflow activities that you have created '
-              'and want to export in this module')
-    )
-    transition_ids = fields.Many2many(
-        'workflow.transition', 'prototype_wf_transition_rel',
-        'module_prototyper_id', 'transition_id', 'Transitions',
-        help=('Enter the list of workflow transitions that you have created '
-              'and want to export in this module')
-    )
 
     _env = None
     _api_version = None
