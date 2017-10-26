@@ -184,7 +184,7 @@ class ModulePrototyper(models.Model):
               'want to export in this module.')
     )
     report_ids = fields.Many2many(
-        'ir.actions.report.xml', 'prototype_report_rel',
+        'ir.actions.report', 'prototype_report_rel',
         'module_prototyper_id', 'report_id', 'Reports',
         help=('Enter the list of reports that you have created and '
               'want to export in this module.')
