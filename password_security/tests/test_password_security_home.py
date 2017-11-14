@@ -47,7 +47,7 @@ class TestPasswordSecurityHome(TransactionCase):
                    'web_auth_reset_password',
                    ]
         with mock.patch.multiple(
-            main.AuthSignupHome, **{m: mock.DEFAULT for m in methods}
+            main.SignupHome, **{m: mock.DEFAULT for m in methods}
         ) as _super:
             mocks = {}
             for method in methods:
@@ -203,7 +203,7 @@ class TestPasswordSecurityHome(TransactionCase):
         """ It should catch PassError and get signup qcontext """
         with self.mock_assets() as assets:
             with mock.patch.object(
-                main.AuthSignupHome, 'get_auth_signup_qcontext',
+                main.SignupHome, 'get_auth_signup_qcontext',
             ) as qcontext:
                 assets['web_auth_signup'].side_effect = MockPassError
                 qcontext.side_effect = EndTestException
@@ -214,7 +214,7 @@ class TestPasswordSecurityHome(TransactionCase):
         """ It should render & return signup form on invalid """
         with self.mock_assets() as assets:
             with mock.patch.object(
-                main.AuthSignupHome, 'get_auth_signup_qcontext', spec=dict
+                main.SignupHome, 'get_auth_signup_qcontext', spec=dict
             ) as qcontext:
                 assets['web_auth_signup'].side_effect = MockPassError
                 res = self.password_security_home.web_auth_signup()
@@ -229,7 +229,7 @@ class TestPasswordSecurityHome(TransactionCase):
         """ It should raise from failed _validate_pass_reset by login """
         with self.mock_assets() as assets:
             with mock.patch.object(
-                main.AuthSignupHome, 'get_auth_signup_qcontext', spec=dict
+                main.SignupHome, 'get_auth_signup_qcontext', spec=dict
             ) as qcontext:
                 qcontext['login'] = 'login'
                 search = assets['request'].env.sudo().search
@@ -244,7 +244,7 @@ class TestPasswordSecurityHome(TransactionCase):
         """ It should raise from failed _validate_pass_reset by email """
         with self.mock_assets() as assets:
             with mock.patch.object(
-                main.AuthSignupHome, 'get_auth_signup_qcontext', spec=dict
+                main.SignupHome, 'get_auth_signup_qcontext', spec=dict
             ) as qcontext:
                 qcontext['login'] = 'login'
                 search = assets['request'].env.sudo().search
@@ -259,7 +259,7 @@ class TestPasswordSecurityHome(TransactionCase):
         """ It should return parent response on no validate errors """
         with self.mock_assets() as assets:
             with mock.patch.object(
-                main.AuthSignupHome, 'get_auth_signup_qcontext', spec=dict
+                main.SignupHome, 'get_auth_signup_qcontext', spec=dict
             ) as qcontext:
                 qcontext['login'] = 'login'
                 assets['request'].httprequest.method = 'POST'
