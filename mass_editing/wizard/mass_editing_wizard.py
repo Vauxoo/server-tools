@@ -268,4 +268,10 @@ class MassEditingWizard(models.TransientModel):
         if fields:
             # We remove fields which are not in _fields
             real_fields = [x for x in fields if x in self._fields]
-        return super(MassEditingWizard, self).read(real_fields, load=load)
+        res = super(MassEditingWizard, self).read(real_fields, load=load)
+        # In order to avoid null value in client side we set dummy values fo
+        # dynamic fields build by fields_view_get
+        dummy_fields = dict.fromkeys(set(fields) - set(self._fields), False)
+        for item in res:
+            item.update(dummy_fields)
+        return res
