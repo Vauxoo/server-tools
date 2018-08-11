@@ -1,29 +1,28 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * module_prototyper
-# 
+#
 # Translators:
-# Carles Antoli <carlesantoli@hotmail.com>, 2016
 # OCA Transbot <transbot@odoo-community.org>, 2016
-# llum.birque@gmail.com <llum.birque@gmail.com>, 2016
+# Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-10 02:53+0000\n"
-"PO-Revision-Date: 2016-09-10 02:53+0000\n"
-"Last-Translator: llum.birque@gmail.com <llum.birque@gmail.com>, 2016\n"
+"POT-Creation-Date: 2017-04-19 18:00+0000\n"
+"PO-Revision-Date: 2017-04-19 18:00+0000\n"
+"Last-Translator: Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: module_prototyper
 #: selection:module_prototyper.module.export,api_version:0
 msgid "8.0"
-msgstr ""
+msgstr "8.0"
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_api_version
@@ -38,7 +37,7 @@ msgstr ""
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Activitats"
 
 #. module: module_prototyper
 #: selection:module_prototyper,license:0
@@ -48,7 +47,7 @@ msgstr ""
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_application
 msgid "Application"
-msgstr ""
+msgstr "Aplicació "
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_author
@@ -95,8 +94,7 @@ msgstr "Context"
 #: model:ir.model.fields,help:module_prototyper.field_ir_model_fields_client_context
 #, python-format
 msgid ""
-"Context to use on the client side when handling the field (python "
-"dictionary)"
+"Context to use on the client side when handling the field (python dictionary)"
 msgstr ""
 
 #. module: module_prototyper
@@ -142,7 +140,7 @@ msgstr "Descripció"
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_display_name
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: module_prototyper
 #: model:ir.model.fields,help:module_prototyper.field_module_prototyper_summary
@@ -173,8 +171,8 @@ msgstr ""
 #: model:ir.model.fields,help:module_prototyper.field_module_prototyper_field_ids
 msgid ""
 "Enter the list of fields that you have created or modified and want to "
-"export in this module. New models will be exported as long as you choose one"
-" of his fields."
+"export in this module. New models will be exported as long as you choose one "
+"of his fields."
 msgstr ""
 
 #. module: module_prototyper
@@ -208,8 +206,8 @@ msgstr ""
 #. module: module_prototyper
 #: model:ir.model.fields,help:module_prototyper.field_module_prototyper_dependency_ids
 msgid ""
-"Enter the list of required modules that need to be installed for your module"
-" to work properly"
+"Enter the list of required modules that need to be installed for your module "
+"to work properly"
 msgstr ""
 
 #. module: module_prototyper
@@ -253,7 +251,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:module_prototyper.module_prototyper_base_form_view
 #: model:ir.ui.view,arch_db:module_prototyper.view_module_export_wizard
 msgid "Export"
-msgstr ""
+msgstr "Exportar "
 
 #. module: module_prototyper
 #: model:ir.ui.view,arch_db:module_prototyper.view_module_export_wizard
@@ -277,7 +275,7 @@ msgstr ""
 #: model:ir.ui.menu,name:module_prototyper.ir_model_model_fields
 #: model:ir.ui.view,arch_db:module_prototyper.module_prototyper_base_form_view
 msgid "Fields"
-msgstr ""
+msgstr "Camps "
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_data
@@ -287,7 +285,7 @@ msgstr ""
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_name
 msgid "File Name"
-msgstr ""
+msgstr "Nom del Fitxer "
 
 #. module: module_prototyper
 #: selection:module_prototyper,license:0
@@ -302,7 +300,7 @@ msgstr ""
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_group_ids
 msgid "Groups"
-msgstr ""
+msgstr "Grups"
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_ir_model_fields_helper
@@ -344,7 +342,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper___last_update
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_write_uid
