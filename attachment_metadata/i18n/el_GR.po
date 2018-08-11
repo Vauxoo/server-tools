@@ -1,20 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * attachment_metadata
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 09:29+0000\n"
+"POT-Creation-Date: 2017-04-28 09:47+0000\n"
 "PO-Revision-Date: 2016-06-01 09:37+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/oca/OCA-server-tools-8-0/language/el_GR/)\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/oca/OCA-server-"
+"tools-8-0/language/el_GR/)\n"
+"Language: el_GR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: attachment_metadata
@@ -36,7 +37,7 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_tree
 msgid "Attachments"
-msgstr ""
+msgstr "Συνημμένα "
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
@@ -52,7 +53,7 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Εταιρεία"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,create_uid:0
@@ -77,7 +78,7 @@ msgstr ""
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,description:0
 msgid "Description"
-msgstr ""
+msgstr "Περιγραφή"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,display_name:0
@@ -108,15 +109,16 @@ msgstr ""
 #: code:addons/attachment_metadata/models/attachment.py:43
 #, python-format
 msgid ""
-"File corrupted: Something was wrong with the retrieved file, please relaunch"
-" the task."
+"File corrupted: Something was wrong with the retrieved file, please relaunch "
+"the task."
 msgstr ""
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,external_hash:0
 msgid ""
 "File hash comes from the external owner of the file.\n"
-"If provided allow to check than downloaded file is the exact copy of the original file."
+"If provided allow to check than downloaded file is the exact copy of the "
+"original file."
 msgstr ""
 
 #. module: attachment_metadata

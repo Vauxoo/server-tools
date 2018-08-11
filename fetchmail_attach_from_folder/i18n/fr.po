@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * fetchmail_attach_from_folder
-# 
+#
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014
 # Hotellook, 2014
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 09:29+0000\n"
-"PO-Revision-Date: 2016-09-16 21:46+0000\n"
+"POT-Creation-Date: 2017-01-12 03:51+0000\n"
+"PO-Revision-Date: 2017-01-13 09:23+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: French (http://www.transifex.com/oca/OCA-server-tools-8-0/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/oca/OCA-server-tools-8-0/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: fetchmail_attach_from_folder
@@ -42,7 +43,7 @@ msgid "Context"
 msgstr "Contexte"
 
 #. module: fetchmail_attach_from_folder
-#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:229
+#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:231
 #, python-format
 msgid "Context \"%s\" is not a dictionary."
 msgstr ""
@@ -166,7 +167,7 @@ msgid ""
 msgstr ""
 
 #. module: fetchmail_attach_from_folder
-#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:226
+#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:228
 #, python-format
 msgid "Invalid context \"%s\": %s"
 msgstr ""
@@ -193,13 +194,13 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: fetchmail_attach_from_folder
-#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:188
+#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:190
 #, python-format
 msgid "Mail attachment"
 msgstr ""
 
 #. module: fetchmail_attach_from_folder
-#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:233
+#: code:addons/fetchmail_attach_from_folder/model/fetchmail_server.py:235
 #, python-format
 msgid "Mailbox %s not found!"
 msgstr ""
@@ -262,7 +263,7 @@ msgstr "Envoyé"
 #. module: fetchmail_attach_from_folder
 #: field:fetchmail.server.folder,sequence:0
 msgid "Sequence"
-msgstr ""
+msgstr "Sequence"
 
 #. module: fetchmail_attach_from_folder
 #: field:fetchmail.server.folder,server_id:0
@@ -290,7 +291,8 @@ msgstr ""
 msgid ""
 "The field in your model that contains the field to match against.\n"
 "Examples:\n"
-"'email' if your model is res.partner, or 'partner_id.email' if you're matching sale orders"
+"'email' if your model is res.partner, or 'partner_id.email' if you're "
+"matching sale orders"
 msgstr ""
 
 #. module: fetchmail_attach_from_folder
@@ -301,8 +303,8 @@ msgstr ""
 #. module: fetchmail_attach_from_folder
 #: help:fetchmail.server.folder,path:0
 msgid ""
-"The path to your mail folder. Typically would be something like "
-"'INBOX.myfolder'"
+"The path to your mail folder. Typically would be something like 'INBOX."
+"myfolder'"
 msgstr ""
 
 #. module: fetchmail_attach_from_folder
@@ -318,7 +320,7 @@ msgstr ""
 #. module: fetchmail_attach_from_folder
 #: field:fetchmail.attach.mail.manually.mail,wizard_id:0
 msgid "Wizard id"
-msgstr ""
+msgstr "Wizard id"
 
 #. module: fetchmail_attach_from_folder
 #: view:fetchmail.server:fetchmail_attach_from_folder.view_email_server_form

@@ -1,20 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * auto_backup
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-14 07:02+0000\n"
-"PO-Revision-Date: 2016-04-05 07:21+0000\n"
+"POT-Creation-Date: 2017-04-28 09:48+0000\n"
+"PO-Revision-Date: 2017-04-19 01:22+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-server-tools-8-0/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-server-"
+"tools-8-0/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: auto_backup
@@ -39,13 +40,13 @@ msgid "Automatic backups of the database can be scheduled as follows:"
 msgstr "数据库的自动备份时间安排如下："
 
 #. module: auto_backup
-#: model:mail.message.subtype,name:auto_backup.failure
-msgid "Backup failed"
+#: model:mail.message.subtype,name:auto_backup.mail_message_subtype_failure
+msgid "Backup Failed"
 msgstr ""
 
 #. module: auto_backup
-#: model:mail.message.subtype,name:auto_backup.success
-msgid "Backup successful"
+#: model:mail.message.subtype,name:auto_backup.mail_message_subtype_success
+msgid "Backup Successful"
 msgstr ""
 
 #. module: auto_backup
@@ -76,19 +77,19 @@ msgid "Choose the storage method for this backup."
 msgstr ""
 
 #. module: auto_backup
-#: code:addons/auto_backup/models/db_backup.py:249
+#: code:addons/auto_backup/models/db_backup.py:250
 #, python-format
 msgid "Cleanup of old database backups failed."
 msgstr ""
 
 #. module: auto_backup
-#: code:addons/auto_backup/models/db_backup.py:132
+#: code:addons/auto_backup/models/db_backup.py:131
 #, python-format
 msgid "Connection Test Failed!"
 msgstr ""
 
 #. module: auto_backup
-#: code:addons/auto_backup/models/db_backup.py:129
+#: code:addons/auto_backup/models/db_backup.py:128
 #, python-format
 msgid "Connection Test Succeeded!"
 msgstr ""
@@ -104,15 +105,15 @@ msgid "Created on"
 msgstr "创建时间"
 
 #. module: auto_backup
-#: code:addons/auto_backup/models/db_backup.py:208
-#: model:mail.message.subtype,description:auto_backup.failure
+#: code:addons/auto_backup/models/db_backup.py:206
+#: model:mail.message.subtype,description:auto_backup.mail_message_subtype_failure
 #, python-format
 msgid "Database backup failed."
 msgstr ""
 
 #. module: auto_backup
-#: code:addons/auto_backup/models/db_backup.py:213
-#: model:mail.message.subtype,description:auto_backup.success
+#: code:addons/auto_backup/models/db_backup.py:214
+#: model:mail.message.subtype,description:auto_backup.mail_message_subtype_success
 #, python-format
 msgid "Database backup succeeded."
 msgstr ""
@@ -120,7 +121,7 @@ msgstr ""
 #. module: auto_backup
 #: help:db.backup,message_last_post:0
 msgid "Date of the last message posted on the record."
-msgstr ""
+msgstr "发布到记录上的最后消息的日期"
 
 #. module: auto_backup
 #: field:db.backup,days_to_keep:0
@@ -128,7 +129,12 @@ msgid "Days to keep"
 msgstr ""
 
 #. module: auto_backup
-#: code:addons/auto_backup/models/db_backup.py:120
+#: field:db.backup,display_name:0
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:119
 #, python-format
 msgid ""
 "Do not save backups on your filestore, or you will backup your backups too!"
@@ -152,7 +158,7 @@ msgstr ""
 #. module: auto_backup
 #: field:db.backup,message_follower_ids:0
 msgid "Followers"
-msgstr ""
+msgstr "关注者"
 
 #. module: auto_backup
 #: view:db.backup:auto_backup.view_backup_conf_form
@@ -169,7 +175,7 @@ msgstr "帮助"
 msgid ""
 "Holds the Chatter summary (number of messages, ...). This summary is "
 "directly in html format in order to be inserted in kanban views."
-msgstr ""
+msgstr "HTML格式的简介，包括了各种项目的总结信息（比如消息数，作业数……）"
 
 #. module: auto_backup
 #: sql_constraint:db.backup:0
@@ -184,17 +190,22 @@ msgstr "ID"
 #. module: auto_backup
 #: help:db.backup,message_unread:0
 msgid "If checked new messages require your attention."
-msgstr ""
+msgstr "查看是否有需要留意的新信息。"
 
 #. module: auto_backup
 #: field:db.backup,message_is_follower:0
 msgid "Is a Follower"
-msgstr ""
+msgstr "关注者"
 
 #. module: auto_backup
 #: field:db.backup,message_last_post:0
 msgid "Last Message Date"
-msgstr ""
+msgstr "最后消息日期"
+
+#. module: auto_backup
+#: field:db.backup,__last_update:0
+msgid "Last Modified on"
+msgstr "最后修改时间"
 
 #. module: auto_backup
 #: field:db.backup,write_uid:0
@@ -214,12 +225,12 @@ msgstr ""
 #. module: auto_backup
 #: field:db.backup,message_ids:0
 msgid "Messages"
-msgstr ""
+msgstr "消息"
 
 #. module: auto_backup
 #: help:db.backup,message_ids:0
 msgid "Messages and communication history"
-msgstr ""
+msgstr "消息和通信历史"
 
 #. module: auto_backup
 #: field:db.backup,method:0
@@ -229,7 +240,7 @@ msgstr ""
 #. module: auto_backup
 #: field:db.backup,name:0
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #. module: auto_backup
 #: help:db.backup,sftp_private_key:0
@@ -281,9 +292,10 @@ msgstr "搜索计划备份调度程序“Backup scheduler”。"
 #. module: auto_backup
 #: view:db.backup:auto_backup.view_backup_conf_form
 msgid ""
-"Set the scheduler to active and fill in how often you want backups "
-"generated."
-msgstr "设置计划动作为有效，并填写备份间隔时间，间隔时间单位，间隔次数，执行时间等数据库具体备份方案。"
+"Set the scheduler to active and fill in how often you want backups generated."
+msgstr ""
+"设置计划动作为有效，并填写备份间隔时间，间隔时间单位，间隔次数，执行时间等数"
+"据库具体备份方案。"
 
 #. module: auto_backup
 #: field:db.backup,message_summary:0
@@ -321,21 +333,23 @@ msgstr "接受 SSH/SFTP 使用的FTP 服务器上的端口。"
 #. module: auto_backup
 #: help:db.backup,sftp_user:0
 msgid ""
-"The username where the SFTP connection should be made with. This is the user"
-" on the external server."
+"The username where the SFTP connection should be made with. This is the user "
+"on the external server."
 msgstr "SFTP 连接使用该用户名。这是在SFTP服务器上的用户。"
 
 #. module: auto_backup
 #: field:db.backup,message_unread:0
 msgid "Unread Messages"
-msgstr ""
+msgstr "未读消息"
 
 #. module: auto_backup
 #: view:db.backup:auto_backup.view_backup_conf_form
 msgid ""
 "Use SFTP with caution! This writes files to external servers under the path "
 "you specify."
-msgstr "请注意你的 SFTP服务器网络安全！数据库备份文件将备份到你的SFTP服务器，文件保存在设置的目录下面。"
+msgstr ""
+"请注意你的 SFTP服务器网络安全！数据库备份文件将备份到你的SFTP服务器，文件保存"
+"在设置的目录下面。"
 
 #. module: auto_backup
 #: field:db.backup,sftp_user:0

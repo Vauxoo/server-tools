@@ -1,20 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * attachment_metadata
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 09:29+0000\n"
+"POT-Creation-Date: 2017-08-19 09:44+0000\n"
 "PO-Revision-Date: 2016-06-01 09:37+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Spanish (Spain) (http://www.transifex.com/oca/OCA-server-tools-8-0/language/es_ES/)\n"
+"Language-Team: Spanish (Spain) (http://www.transifex.com/oca/OCA-server-"
+"tools-8-0/language/es_ES/)\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: attachment_metadata
@@ -52,7 +53,7 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Compañía"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,create_uid:0
@@ -82,7 +83,7 @@ msgstr ""
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre para mostrar"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,external_hash:0
@@ -108,15 +109,16 @@ msgstr ""
 #: code:addons/attachment_metadata/models/attachment.py:43
 #, python-format
 msgid ""
-"File corrupted: Something was wrong with the retrieved file, please relaunch"
-" the task."
+"File corrupted: Something was wrong with the retrieved file, please relaunch "
+"the task."
 msgstr ""
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,external_hash:0
 msgid ""
 "File hash comes from the external owner of the file.\n"
-"If provided allow to check than downloaded file is the exact copy of the original file."
+"If provided allow to check than downloaded file is the exact copy of the "
+"original file."
 msgstr ""
 
 #. module: attachment_metadata
@@ -155,7 +157,7 @@ msgstr ""
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación en"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,write_uid:0
@@ -229,7 +231,7 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,type:0
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search

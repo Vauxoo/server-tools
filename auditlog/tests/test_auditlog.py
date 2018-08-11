@@ -114,3 +114,70 @@ class TestAuditlogFast(TransactionCase, TestAuditlog):
     def tearDown(self):
         self.groups_rule.unlink()
         super(TestAuditlogFast, self).tearDown()
+
+
+class TestMethods(TransactionCase):
+    def setUp(self):
+        super(TestMethods, self).setUp()
+
+        # Clear all existing logging lines
+        existing_audit_logs = self.env['auditlog.log'].search([])
+        existing_audit_logs.unlink()
+
+        # Get partner to test
+        self.partner = self.env['res.partner'].search([], limit=1)
+
+        self.partner_model = self.env['ir.model'].search([
+            ('model', '=', 'res.partner')])
+
+        # Setup auditlog rules
+        self.auditlog_rule = self.env['auditlog.rule'].create({
+            'name': 'res.partner',
+            'model_id': self.partner_model.id,
+            'log_type': 'fast',
+            'log_read': False,
+            'log_create': False,
+            'log_write': False,
+            'log_unlink': False,
+            'log_custom_method': True,
+            'custom_method_ids': [(0, 0, {
+                'name': 'onchange_type',
+                'message': 'onchange_type',
+            })]
+        })
+
+        self.auditlog_rule.subscribe()
+
+    def tearDown(self):
+        self.auditlog_rule.unsubscribe()
+        super(TestMethods, self).tearDown()
+
+    def test_01_subscribe_unsubscribe(self):
+        """The test is subscribed by default, so let's try both"""
+        self.auditlog_rule.unsubscribe()
+        self.auditlog_rule.subscribe()
+
+    def test_02_copy_res_partner_logging(self):
+        """ Copy partner and see if the action gets logged """
+        self.partner.onchange_type(False)
+
+        logs = self.env['auditlog.log'].search([
+            ('res_id', '=', self.partner.id),
+            ('model_id', '=', self.partner_model.id),
+            ('method', '=', 'onchange_type')
+        ])
+
+        self.assertEqual(len(logs), 1)
+
+    def test_03_copy_res_partner_logging_old_api(self):
+        """ Perform the same test as 02 but with the old API """
+        self.registry('res.partner').onchange_type(
+            self.cr, self.uid, self.partner.id, False)
+
+        logs = self.env['auditlog.log'].search([
+            ('res_id', '=', self.partner.id),
+            ('model_id', '=', self.partner_model.id),
+            ('method', '=', 'onchange_type')
+        ])
+
+        self.assertEqual(len(logs), 1)

@@ -1,11 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * base_multi_image
-# 
+#
 # Translators:
-# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2015
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2015
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2015
 # Antonio Trueba, 2016
 # Armando Vulcano Junior <vulcano@uol.com.br>, 2015
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
@@ -13,14 +15,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 14:33+0000\n"
-"PO-Revision-Date: 2016-05-11 16:42+0000\n"
+"POT-Creation-Date: 2017-11-11 07:46+0000\n"
+"PO-Revision-Date: 2017-11-07 22:10+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-server-tools-8-0/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-server-"
+"tools-8-0/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: base_multi_image
@@ -34,7 +37,7 @@ msgstr ""
 #: view:base_multi_image.image:base_multi_image.image_form_view
 #: field:base_multi_image.image,comments:0
 msgid "Comments"
-msgstr ""
+msgstr "Comentarios"
 
 #. module: base_multi_image
 #: field:base_multi_image.image,create_uid:0
@@ -145,8 +148,8 @@ msgstr ""
 #: help:base_multi_image.image,image_medium:0
 msgid ""
 "Medium-sized image. It is automatically resized as a 128 x 128 px image, "
-"with aspect ratio preserved, only when the image exceeds one of those sizes."
-" Use this field in form views or kanban views."
+"with aspect ratio preserved, only when the image exceeds one of those sizes. "
+"Use this field in form views or kanban views."
 msgstr ""
 
 #. module: base_multi_image
@@ -226,4 +229,4 @@ msgstr ""
 #. module: base_multi_image
 #: selection:base_multi_image.image,storage:0
 msgid "URL"
-msgstr ""
+msgstr "URL"

@@ -1,58 +1,60 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * attachment_metadata
-# 
+#
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 18:30+0000\n"
-"PO-Revision-Date: 2016-06-01 09:37+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: German (http://www.transifex.com/oca/OCA-server-tools-8-0/language/de/)\n"
+"POT-Creation-Date: 2017-03-07 03:47+0000\n"
+"PO-Revision-Date: 2017-03-10 13:16+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-server-tools-8-0/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Attachment"
-msgstr ""
+msgstr "Anhang"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,name:0
 msgid "Attachment Name"
-msgstr ""
+msgstr "Anhangsbezeichnung"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,attachment_id:0
 msgid "Attachment id"
-msgstr ""
+msgstr "Anhangskennung"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_tree
 msgid "Attachments"
-msgstr ""
+msgstr "Anhänge"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Binary"
-msgstr ""
+msgstr "Binär"
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,type:0
 msgid "Binary File or URL"
-msgstr ""
+msgstr "Binäre Datei oder URL"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Unternehmen"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,create_uid:0
@@ -67,12 +69,12 @@ msgstr "Erstellt am:"
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Creation Month"
-msgstr ""
+msgstr "Anlagemonat"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,db_datas:0
 msgid "Database Data"
-msgstr ""
+msgstr "Datenbank-Daten"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,description:0
@@ -82,42 +84,47 @@ msgstr "Beschreibung"
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,external_hash:0
 msgid "External hash"
-msgstr ""
+msgstr "Externer Hashwert"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,datas:0
 msgid "File Content"
-msgstr ""
+msgstr "Dateiinhalt"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,datas_fname:0
 msgid "File Name"
-msgstr ""
+msgstr "Dateiname"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,file_size:0
 msgid "File Size"
-msgstr ""
+msgstr "Dateigröße"
 
 #. module: attachment_metadata
 #: code:addons/attachment_metadata/models/attachment.py:43
 #, python-format
 msgid ""
-"File corrupted: Something was wrong with the retrieved file, please relaunch"
-" the task."
+"File corrupted: Something was wrong with the retrieved file, please relaunch "
+"the task."
 msgstr ""
+"Datei verstümmelt: Etwas ist bei der erhaltenen Datei schief gelaufen, bitte "
+"Aufgabe wiederholen."
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,external_hash:0
 msgid ""
 "File hash comes from the external owner of the file.\n"
-"If provided allow to check than downloaded file is the exact copy of the original file."
+"If provided allow to check than downloaded file is the exact copy of the "
+"original file."
 msgstr ""
+"Dateiprüfsumme stammt von externem Dateibesitzer.\n"
+"Wenn verfügbar erlaubt dies die exakte Übereinstimmung mit Originaldatei."
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,internal_hash:0
@@ -125,22 +132,24 @@ msgid ""
 "File hash computed with file data to be compared to external hash when "
 "provided."
 msgstr ""
+"Aus Datei errechnete Prüfsumme, mit externem Hash zu vergleich, wenn "
+"verfügbar."
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,file_type:0
 msgid "File type"
-msgstr ""
+msgstr "Dateityp"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Filter on my documents"
-msgstr ""
+msgstr "Meine Dokumente eingrenzen"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Group By"
-msgstr ""
+msgstr "Gruppieren nach"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,id:0
@@ -150,12 +159,12 @@ msgstr "ID"
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,internal_hash:0
 msgid "Internal hash"
-msgstr ""
+msgstr "Interne Prüfsumme"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zuletzt geändert am"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,write_uid:0
@@ -170,23 +179,23 @@ msgstr "Zuletzt aktualisiert am"
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,attachment_id:0
 msgid "Link to ir.attachment model "
-msgstr ""
+msgstr "Verknüpfe mit ir.attachment-Modell"
 
 #. module: attachment_metadata
 #: model:ir.actions.act_window,name:attachment_metadata.action_attachment
 #: model:ir.ui.menu,name:attachment_metadata.menu_ir_attachment
 msgid "Meta data Attachments"
-msgstr ""
+msgstr "Metadaten-Anhänge"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "My Document(s)"
-msgstr ""
+msgstr "Meine Dokumente"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Owner"
-msgstr ""
+msgstr "Besitzer"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,res_id:0
@@ -196,7 +205,7 @@ msgstr "Ressourcen-ID"
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,res_model:0
 msgid "Resource Model"
-msgstr ""
+msgstr "Ressourcen-Modell"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,res_name:0
@@ -206,12 +215,12 @@ msgstr "Ressourcenname"
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,store_fname:0
 msgid "Stored Filename"
-msgstr ""
+msgstr "Gespeicherter Dateiname"
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,res_model:0
 msgid "The database object this attachment will be attached to"
-msgstr ""
+msgstr "Das Datenbankobjekt dem dieser Anhang zugefügt wird"
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,file_type:0
@@ -219,24 +228,26 @@ msgid ""
 "The file type determines an import method to be used to parse and transform "
 "data before their import in ERP"
 msgstr ""
+"Der Dateityp legt die Methode fest, die beim Parsen und Umwandeln vor dem "
+"Import ins ERP eingesetzt wird."
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,res_id:0
 msgid "The record id this is attached to"
-msgstr ""
+msgstr "Die Datensatz-ID der dieses angehängt wird"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,type:0
 msgid "Type"
-msgstr ""
+msgstr "Art"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,url:0
 msgid "Url"
-msgstr ""
+msgstr "Url"

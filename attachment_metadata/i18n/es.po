@@ -1,42 +1,44 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * attachment_metadata
-# 
+#
 # Translators:
+# Gelo Joga Landoo <gj@landoo.es>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 18:30+0000\n"
-"PO-Revision-Date: 2016-06-01 09:37+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-server-tools-8-0/language/es/)\n"
+"POT-Creation-Date: 2017-02-21 21:56+0000\n"
+"PO-Revision-Date: 2017-02-24 11:56+0000\n"
+"Last-Translator: Gelo Joga Landoo <gj@landoo.es>\n"
+"Language-Team: Spanish (http://www.transifex.com/oca/OCA-server-tools-8-0/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Attachment"
-msgstr ""
+msgstr "Adjunto"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,name:0
 msgid "Attachment Name"
-msgstr ""
+msgstr "Nombre del adjunto"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,attachment_id:0
 msgid "Attachment id"
-msgstr ""
+msgstr "Id del adjunto"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_tree
 msgid "Attachments"
-msgstr ""
+msgstr "Adjuntos"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
@@ -52,7 +54,7 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Compañía"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,create_uid:0
@@ -67,12 +69,12 @@ msgstr "Creado el"
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Creation Month"
-msgstr ""
+msgstr "Mes de creación"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,db_datas:0
 msgid "Database Data"
-msgstr ""
+msgstr "Fecha de la base de datos"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,description:0
@@ -97,26 +99,27 @@ msgstr ""
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,datas_fname:0
 msgid "File Name"
-msgstr ""
+msgstr "Nombre del archivo"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,file_size:0
 msgid "File Size"
-msgstr ""
+msgstr "Tamaño del archivo"
 
 #. module: attachment_metadata
 #: code:addons/attachment_metadata/models/attachment.py:43
 #, python-format
 msgid ""
-"File corrupted: Something was wrong with the retrieved file, please relaunch"
-" the task."
+"File corrupted: Something was wrong with the retrieved file, please relaunch "
+"the task."
 msgstr ""
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,external_hash:0
 msgid ""
 "File hash comes from the external owner of the file.\n"
-"If provided allow to check than downloaded file is the exact copy of the original file."
+"If provided allow to check than downloaded file is the exact copy of the "
+"original file."
 msgstr ""
 
 #. module: attachment_metadata
@@ -181,12 +184,12 @@ msgstr ""
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "My Document(s)"
-msgstr ""
+msgstr "Mis Documento(s)"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Owner"
-msgstr ""
+msgstr "Propietario"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,res_id:0
@@ -196,7 +199,7 @@ msgstr "ID del recurso"
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,res_model:0
 msgid "Resource Model"
-msgstr ""
+msgstr "Modelo de Recursos"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,res_name:0
@@ -229,14 +232,14 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,type:0
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,url:0
 msgid "Url"
-msgstr ""
+msgstr "Url"

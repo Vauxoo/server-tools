@@ -1,20 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * base_custom_info
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 09:29+0000\n"
-"PO-Revision-Date: 2016-09-17 18:43+0000\n"
+"POT-Creation-Date: 2017-08-17 03:35+0000\n"
+"PO-Revision-Date: 2017-08-11 11:55+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/oca/OCA-server-tools-8-0/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/oca/OCA-server-tools-8-0/"
+"language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: base_custom_info
@@ -54,14 +55,14 @@ msgstr ""
 #: field:custom.info.template,create_uid:0
 #: field:custom.info.value,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Aangemaakt door"
 
 #. module: base_custom_info
 #: field:custom.info.property,create_date:0
 #: field:custom.info.template,create_date:0
 #: field:custom.info.value,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Aangemaakt op"
 
 #. module: base_custom_info
 #: model:ir.ui.menu,name:base_custom_info.menu_base_custom_info
@@ -128,7 +129,7 @@ msgstr "Te tonen naam"
 #: field:custom.info.property,id:0 field:custom.info.template,id:0
 #: field:custom.info.value,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: base_custom_info
 #: view:custom.info.template:base_custom_info.base_custom_info_template_form
@@ -153,14 +154,14 @@ msgstr "Laatst bijgewerkt op"
 #: field:custom.info.property,write_uid:0
 #: field:custom.info.template,write_uid:0 field:custom.info.value,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: base_custom_info
 #: field:custom.info.property,write_date:0
 #: field:custom.info.template,write_date:0
 #: field:custom.info.value,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: base_custom_info
 #: field:custom.info.model_link,model:0
@@ -168,7 +169,7 @@ msgstr ""
 #: field:custom.info.template,model_id:0 field:custom.info.value,model:0
 #: field:custom.info.value,model_id:0
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #. module: base_custom_info
 #: field:custom.info.property,name:0 field:custom.info.template,name:0

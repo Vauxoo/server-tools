@@ -1,31 +1,34 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * attachment_metadata
-# 
+#
 # Translators:
+# Paolo Valier, 2016
+# Paolo Valier, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-28 00:59+0000\n"
-"PO-Revision-Date: 2016-06-01 09:37+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Italian (http://www.transifex.com/oca/OCA-server-tools-8-0/language/it/)\n"
+"POT-Creation-Date: 2016-12-24 04:14+0000\n"
+"PO-Revision-Date: 2016-12-23 08:32+0000\n"
+"Last-Translator: Paolo Valier\n"
+"Language-Team: Italian (http://www.transifex.com/oca/OCA-server-tools-8-0/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Attachment"
-msgstr ""
+msgstr "Allegato"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,name:0
 msgid "Attachment Name"
-msgstr ""
+msgstr "Nome Allegato"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,attachment_id:0
@@ -52,7 +55,7 @@ msgstr ""
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 #: field:ir.attachment.metadata,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,create_uid:0
@@ -102,21 +105,22 @@ msgstr "Nome del campo"
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,file_size:0
 msgid "File Size"
-msgstr ""
+msgstr "Dimensione File"
 
 #. module: attachment_metadata
 #: code:addons/attachment_metadata/models/attachment.py:43
 #, python-format
 msgid ""
-"File corrupted: Something was wrong with the retrieved file, please relaunch"
-" the task."
+"File corrupted: Something was wrong with the retrieved file, please relaunch "
+"the task."
 msgstr ""
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,external_hash:0
 msgid ""
 "File hash comes from the external owner of the file.\n"
-"If provided allow to check than downloaded file is the exact copy of the original file."
+"If provided allow to check than downloaded file is the exact copy of the "
+"original file."
 msgstr ""
 
 #. module: attachment_metadata
@@ -140,7 +144,7 @@ msgstr ""
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search
 msgid "Group By"
-msgstr ""
+msgstr "Raggruppa per"
 
 #. module: attachment_metadata
 #: field:ir.attachment.metadata,id:0
@@ -211,7 +215,7 @@ msgstr ""
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,res_model:0
 msgid "The database object this attachment will be attached to"
-msgstr ""
+msgstr "L'oggetto del database a cui l'allegato verrà collegato"
 
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,file_type:0
@@ -223,7 +227,7 @@ msgstr ""
 #. module: attachment_metadata
 #: help:ir.attachment.metadata,res_id:0
 msgid "The record id this is attached to"
-msgstr ""
+msgstr "L'id del record a cui è collegato"
 
 #. module: attachment_metadata
 #: view:ir.attachment.metadata:attachment_metadata.view_external_attachment_search

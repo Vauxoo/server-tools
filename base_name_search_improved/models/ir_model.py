@@ -23,9 +23,11 @@ def _get_rec_names(self):
 
 def _extend_name_results(self, domain, results, limit):
     result_count = len(results)
-    if result_count < limit:
+    if not limit or result_count < limit:
         domain += [('id', 'not in', [x[0] for x in results])]
-        recs = self.search(domain, limit=limit - result_count)
+        recs = self.search(
+            domain, limit=limit - result_count if limit else limit
+        )
         results.extend(recs.name_get())
     return results
 
@@ -36,6 +38,10 @@ class ModelExtended(models.Model):
     name_search_ids = fields.Many2many(
         'ir.model.fields',
         string='Name Search Fields')
+    name_search_use_standard = fields.Boolean(
+        'Use standard search', default=True,
+        help='First try to find matches with the standard search',
+    )
 
     def _register_hook(self, cr, ids=None):
 
@@ -44,9 +50,16 @@ class ModelExtended(models.Model):
             @api.model
             def name_search(self, name='', args=None,
                             operator='ilike', limit=100):
+                res = []
+                model_record = self.env['ir.model'].search([
+                    ('model', '=', str(self._model)),
+                ])
                 # Perform standard name search
-                res = name_search.origin(
-                    self, name=name, args=args, operator=operator, limit=limit)
+                if not name or model_record.name_search_use_standard:
+                    res = name_search.origin(
+                        self, name=name, args=args, operator=operator,
+                        limit=limit,
+                    )
                 enabled = self.env.context.get('name_search_extended', True)
                 # Perform extended name search
                 # Note: Empty name causes error on

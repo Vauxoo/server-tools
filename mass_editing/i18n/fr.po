@@ -1,10 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * mass_editing
-# 
+#
 # Translators:
-# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2015-2016
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2015-2016
 # Armando Vulcano Junior <vulcano@uol.com.br>, 2015
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011,2013-2014
 # Florian Hatat, 2015
@@ -14,18 +15,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 14:34+0000\n"
-"PO-Revision-Date: 2016-05-08 15:26+0000\n"
+"POT-Creation-Date: 2017-01-17 07:52+0000\n"
+"PO-Revision-Date: 2017-01-19 20:17+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: French (http://www.transifex.com/oca/OCA-server-tools-8-0/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/oca/OCA-server-tools-8-0/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: mass_editing
+#: code:addons/mass_editing/wizard/mass_editing_wizard.py:36
 #: view:mass.object:mass_editing.view_mass_object_form
+#, python-format
 msgid "Add"
 msgstr "Ajouter"
 
@@ -33,6 +37,18 @@ msgstr "Ajouter"
 #: view:mass.object:mass_editing.view_mass_object_form
 msgid "Advanced"
 msgstr "Avancées"
+
+#. module: mass_editing
+#: code:addons/mass_editing/wizard/mass_editing_wizard.py:179
+#, python-format
+msgid "Apply"
+msgstr "Appliquer"
+
+#. module: mass_editing
+#: code:addons/mass_editing/wizard/mass_editing_wizard.py:184
+#, python-format
+msgid "Close"
+msgstr "Fermer"
 
 #. module: mass_editing
 #: field:mass.editing.wizard,create_uid:0 field:mass.object,create_uid:0
@@ -63,7 +79,6 @@ msgid ""
 msgstr ""
 
 #. module: mass_editing
-#: model:ir.model,name:mass_editing.model_ir_model_fields
 #: view:mass.object:mass_editing.view_mass_object_form
 #: field:mass.object,field_ids:0
 msgid "Fields"
@@ -131,25 +146,35 @@ msgid "Object"
 msgstr "Objet"
 
 #. module: mass_editing
+#: code:addons/mass_editing/wizard/mass_editing_wizard.py:37
 #: view:mass.object:mass_editing.view_mass_object_form
+#, python-format
 msgid "Remove"
 msgstr "Supprimer"
 
 #. module: mass_editing
 #: view:mass.object:mass_editing.view_mass_object_form
 msgid "Remove the contextual action to use this template on related documents"
-msgstr "Supprimer l'action contextuelle pour utiliser ce modèle sur les documents liés"
+msgstr ""
+"Supprimer l'action contextuelle pour utiliser ce modèle sur les documents "
+"liés"
+
+#. module: mass_editing
+#: code:addons/mass_editing/wizard/mass_editing_wizard.py:35
+#, python-format
+msgid "Set"
+msgstr "Choisir"
 
 #. module: mass_editing
 #: field:mass.object,ref_ir_act_window:0
 msgid "Sidebar Action"
-msgstr ""
+msgstr "Action sur la barre latérale"
 
 #. module: mass_editing
 #: view:mass.object:mass_editing.view_mass_object_form
 #: field:mass.object,ref_ir_value:0
 msgid "Sidebar Button"
-msgstr ""
+msgstr "Bouton sur la barre latérale"
 
 #. module: mass_editing
 #: help:mass.object,ref_ir_act_window:0
