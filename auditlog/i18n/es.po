@@ -1,37 +1,39 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * auditlog
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Daniel Schweiger <danielcccasle@gmail.com>, 2017
+# Pedro M. Baeza <pedro.baeza@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-01 10:38+0000\n"
-"PO-Revision-Date: 2017-05-01 10:38+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-12-01 02:09+0000\n"
+"PO-Revision-Date: 2017-12-01 02:09+0000\n"
+"Last-Translator: Pedro M. Baeza <pedro.baeza@gmail.com>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: auditlog
 #: model:ir.model.fields,field_description:auditlog.field_auditlog_rule_action_id
 msgid "Action"
-msgstr "Acción"
+msgstr "Acción  "
 
 #. module: auditlog
 #: model:ir.ui.menu,name:auditlog.menu_audit
 msgid "Audit"
-msgstr "Auditoría"
+msgstr "Auditoría  "
 
 #. module: auditlog
 #: model:ir.model,name:auditlog.model_auditlog_autovacuum
 msgid "Auditlog - Delete old logs"
-msgstr "Auditlog - Borrar registros antiguos"
+msgstr "Auditlog - Borrar registros antiguos "
 
 #. module: auditlog
 #: model:ir.model,name:auditlog.model_auditlog_http_session
@@ -83,7 +85,7 @@ msgstr "Creado por"
 #: model:ir.ui.view,arch_db:auditlog.view_auditlog_http_request_search
 #: model:ir.ui.view,arch_db:auditlog.view_auditlog_http_session_search
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Creado el"
 
 #. module: auditlog
 #: model:ir.ui.view,arch_db:auditlog.view_auditlog_log_search
@@ -133,11 +135,16 @@ msgstr "Registro completo"
 #. module: auditlog
 #: model:ir.model.fields,help:auditlog.field_auditlog_rule_log_type
 msgid ""
-"Full log: make a diff between the data before and after the operation (log more info like computed fields which were updated, but it is slower)\n"
-"Fast log: only log the changes made through the create and write operations (less information, but it is faster)"
+"Full log: make a diff between the data before and after the operation (log "
+"more info like computed fields which were updated, but it is slower)\n"
+"Fast log: only log the changes made through the create and write operations "
+"(less information, but it is faster)"
 msgstr ""
-"Registro completo: Realiza una comparación entre los datos antes y después de la operación (registra más información como los campos calculados que fueron actualizados, pero es más lento)\n"
-"Registro rápido: sólo registra los cambios realizados a través de las operaciones de crear y escribir (menos información, pero más rápido)"
+"Registro completo: Realiza una comparación entre los datos antes y después "
+"de la operación (registra más información como los campos calculados que "
+"fueron actualizados, pero es más lento)\n"
+"Registro rápido: sólo registra los cambios realizados a través de las "
+"operaciones de crear y escribir (menos información, pero más rápido)"
 
 #. module: auditlog
 #: model:ir.ui.view,arch_db:auditlog.view_auditlog_http_request_search
@@ -223,12 +230,12 @@ msgstr "Registro - Campo actualizado"
 #. module: auditlog
 #: model:ir.model.fields,field_description:auditlog.field_auditlog_rule_log_create
 msgid "Log Creates"
-msgstr "Registrar creaciones"
+msgstr "Crear registros"
 
 #. module: auditlog
 #: model:ir.model.fields,field_description:auditlog.field_auditlog_rule_log_unlink
 msgid "Log Deletes"
-msgstr "Registrar borrados"
+msgstr "Borrar registros"
 
 #. module: auditlog
 #: model:ir.model.fields,field_description:auditlog.field_auditlog_rule_log_read
@@ -328,25 +335,25 @@ msgstr "Reglas"
 #. module: auditlog
 #: model:ir.model.fields,help:auditlog.field_auditlog_rule_model_id
 msgid "Select model for which you want to generate log."
-msgstr "Seleccione el modelo que quiere registrar."
+msgstr "Seleccione el modelo al que quiere generar un registro"
 
 #. module: auditlog
 #: model:ir.model.fields,help:auditlog.field_auditlog_rule_log_create
 msgid ""
-"Select this if you want to keep track of creation on any record of the model"
-" of this rule"
+"Select this if you want to keep track of creation on any record of the model "
+"of this rule"
 msgstr ""
-"Marque esta casilla si desea registrar la creación de cualquier registro del"
-" modelo de esta regla"
+"Marque esta casilla si desea hacer un seguimiento de la creacion de "
+"cualquier registro del modelo de esta regla"
 
 #. module: auditlog
 #: model:ir.model.fields,help:auditlog.field_auditlog_rule_log_unlink
 msgid ""
-"Select this if you want to keep track of deletion on any record of the model"
-" of this rule"
+"Select this if you want to keep track of deletion on any record of the model "
+"of this rule"
 msgstr ""
-"Marque esta casilla si desea registrar el borrado de cualquier registro del "
-"modelo de esta regla"
+"Marque esta casilla si desea hacer un seguimiento  del borrado de los "
+"registros del modelo de esta regla"
 
 #. module: auditlog
 #: model:ir.model.fields,help:auditlog.field_auditlog_rule_log_write
@@ -354,8 +361,8 @@ msgid ""
 "Select this if you want to keep track of modification on any record of the "
 "model of this rule"
 msgstr ""
-"Marque esta casilla si desea registrar la modificación de cualquier registro"
-" del modelo de esta regla"
+"Marque esta casilla si desea hacer un seguimiento de las modificaciones de "
+"cualquier registro del modelo de esta regla"
 
 #. module: auditlog
 #: model:ir.model.fields,help:auditlog.field_auditlog_rule_log_read
@@ -363,8 +370,8 @@ msgid ""
 "Select this if you want to keep track of read/open on any record of the "
 "model of this rule"
 msgstr ""
-"Marque esta casilla si desea registrar la lectura/apertura de cualquier "
-"registro del modelo de esta regla"
+"Marque esta casilla si desea hacer seguimiento de lectura/apertura de "
+"cualquier registro del modelo de esta regla"
 
 #. module: auditlog
 #: model:ir.model.fields,field_description:auditlog.field_auditlog_http_request_http_session_id

@@ -6,6 +6,7 @@ import datetime
 import logging
 
 from odoo import api, fields, models
+from odoo import SUPERUSER_ID
 
 
 _logger = logging.getLogger(__name__)
@@ -66,7 +67,7 @@ class ResUsersRoleLine(models.Model):
     role_id = fields.Many2one(
         'res.users.role', string=u"Role", ondelete='cascade')
     user_id = fields.Many2one(
-        'res.users', string=u"User")
+        'res.users', string=u"User", domain=[('id', '!=', SUPERUSER_ID)])
     date_from = fields.Date(u"From")
     date_to = fields.Date(u"To")
     is_enabled = fields.Boolean(u"Enabled", compute='_compute_is_enabled')
@@ -85,3 +86,10 @@ class ResUsersRoleLine(models.Model):
                 date_to = fields.Date.from_string(role_line.date_to)
                 if today > date_to:
                     role_line.is_enabled = False
+
+    @api.multi
+    def unlink(self):
+        users = self.mapped('user_id')
+        res = super(ResUsersRoleLine, self).unlink()
+        users.set_groups_from_roles()
+        return res

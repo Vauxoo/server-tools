@@ -7,7 +7,7 @@ import logging
 import json
 
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 from odoo.tools.config import config
 from odoo.tools.translate import _
 
@@ -48,12 +48,12 @@ class KeychainAccount(models.Model):
         help="'prod', 'dev', etc. or empty (for all)"
     )
     login = fields.Char(help="Login")
-    clear_password = fields.Char(
+    clear_password = fields.Text(
         help="Password. Leave empty if no changes",
         inverse='_inverse_set_password',
         compute='_compute_password',
         store=False)
-    password = fields.Char(
+    password = fields.Text(
         help="Password is derived from clear_password",
         readonly=True)
     data = fields.Text(help="Additionnal data as json")
@@ -62,12 +62,12 @@ class KeychainAccount(models.Model):
         # Only needed in v8 for _description_searchable issues
         return True
 
-    def get_password(self):
+    def _get_password(self):
         """Password in clear text."""
         try:
             return self._decode_password(self.password)
-        except Warning as warn:
-            raise Warning(_(
+        except UserError as warn:
+            raise UserError(_(
                 "%s \n"
                 "Account: %s %s %s " % (
                     warn,
@@ -116,11 +116,58 @@ class KeychainAccount(models.Model):
 
     @implemented_by_keychain
     def _validate_data(self, data):
+        """Ensure data is valid according to the namespace.
+
+        How to use:
+        - Create a method prefixed with your namespace
+        - Put your validation logic inside
+        - Return true if data is valid for your usage
+
+        This method will be called on write().
+        If false is returned an user error will be raised.
+
+        Example:
+        def _hereismynamspace_validate_data():
+            return len(data.get('some_param', '') > 6)
+
+        @params data dict
+        @returns boolean
+        """
         pass
+
+    def _default_validate_data(self, data):
+        """Default validation.
+
+        By default says data is always valid.
+        See _validata_data() for more information.
+        """
+        return True
 
     @implemented_by_keychain
     def _init_data(self):
+        """Initialize data field.
+
+        How to use:
+        - Create a method prefixed with your namespace
+        - Return a dict with the keys and may be default
+        values your expect.
+
+        This method will be called on write().
+
+        Example:
+        def _hereismynamspace_init_data():
+            return { 'some_param': 'default_value' }
+
+        @returns dict
+        """
         pass
+
+    def _default_init_data(self):
+        """Default initialization.
+
+        See _init_data() for more information.
+        """
+        return {}
 
     @staticmethod
     def _retrieve_env():
@@ -161,7 +208,7 @@ class KeychainAccount(models.Model):
         try:
             return unicode(cipher.decrypt(str(data)), 'UTF-8')
         except InvalidToken:
-            raise Warning(_(
+            raise UserError(_(
                 "Password has been encrypted with a different "
                 "key. Unless you can recover the previous key, "
                 "this password is unreadable."
@@ -195,7 +242,7 @@ class KeychainAccount(models.Model):
             envs = cls._retrieve_env()  # ex: ('dev', False)
         keys = _get_keys(envs)
         if len(keys) == 0:
-            raise Warning(_(
+            raise UserError(_(
                 "No 'keychain_key_%s' entries found in config file. "
                 "Use a key similar to: %s" % (envs[0], Fernet.generate_key())
             ))

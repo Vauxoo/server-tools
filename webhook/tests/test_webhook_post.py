@@ -1,15 +1,6 @@
 # -*- coding: utf-8 -*-
-##############################################################
-#    Module Writen For Odoo, Open Source Management Solution
-#
-#    Copyright (c) 2011 Vauxoo - http://www.vauxoo.com
-#    All Rights Reserved.
-#    license: http://www.gnu.org/licenses/agpl-3.0.html
-#    info Vauxoo (info@vauxoo.com)
-#    coded by: moylop260@vauxoo.com
-#    planned by: nhomar@vauxoo.com
-#                moylop260@vauxoo.com
-############################################################################
+# Copyright 2016 Vauxoo - https://www.vauxoo.com/
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import json
 import requests
@@ -28,16 +19,25 @@ class Webhook(models.Model):
 
     @api.multi
     def run_wehook_test_get_foo(self):
-        """This method is just to test webhook.
+        """
+        This method is just to test webhook.
         This needs receive a json request with
         next json values: {'foo': 'bar'}
         If value is different will raise a error.
         """
         self.ensure_one()
-        for rec in self:
-            if 'bar' != rec.env.request.jsonrequest['foo']:
-                raise exceptions.ValidationError(
-                    _("Wrong value received"))
+        if self.env.request.jsonrequest['foo'] != 'bar':
+            raise exceptions.ValidationError(_("Wrong value received"))
+
+
+class FakeHttpRequest(object):
+    remote_address = None
+    headers = {}
+
+
+class FakeRequest(object):
+    def __init__(self, **args):
+        self.httprequest = FakeHttpRequest()
 
 
 class TestWebhookPost(HttpCase):
@@ -114,3 +114,11 @@ class TestWebhookPost(HttpCase):
         self.assertEqual(
             json_response.get('error', False), False,
             'Error in webhook get foo test!.')
+
+    def test_webhook_search_with_request(self):
+        """Test to check that 'search_with_request' method works!"""
+        fake_req = FakeRequest()
+        fake_req.httprequest.headers['X-Webhook-Test-Address'] = '127.0.0.1'
+        wh = self.webhook.search_with_request(fake_req)
+        self.assertEqual(wh.id, self.env.ref('webhook.webhook_test').id,
+                         "Search webhook from request IP info is not working")

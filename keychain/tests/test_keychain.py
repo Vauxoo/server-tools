@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+# © 2016 Akretion Raphaël REVERDY
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 from odoo.tests.common import TransactionCase
 from odoo.tools.config import config
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 
 import logging
@@ -65,7 +68,7 @@ class TestKeychain(TransactionCase):
             account.clear_password = password
             account._inverse_set_password()
             self.assertTrue(account.clear_password != account.password)
-            self.assertEqual(account.get_password(), password)
+            self.assertEqual(account._get_password(), password)
 
     def test_wrong_key(self):
         """It should raise an exception when encoded key != decoded."""
@@ -75,25 +78,25 @@ class TestKeychain(TransactionCase):
         account._inverse_set_password()
         config['keychain_key'] = Fernet.generate_key()
         try:
-            account.get_password()
-            self.assertTrue(False, 'It should not work with another key')
-        except Warning as err:
-            self.assertTrue(True, 'It should raise a Warning')
+            account._get_password()
+            self.fail('It should not work with another key')
+        except UserError as err:
+            self.assertTrue(True, 'It should raise a UserError')
             self.assertTrue(
                 'has been encrypted with a diff' in str(err),
                 'It should display the right msg')
         else:
-            self.assertTrue(False, 'It should raise a Warning')
+            self.fail('It should raise a UserError')
 
     def test_no_key(self):
         """It should raise an exception when no key is set."""
         account = self._create_account()
         del config.options['keychain_key']
 
-        with self.assertRaises(Warning) as err:
+        with self.assertRaises(UserError) as err:
             account.clear_password = 'aiuepr'
             account._inverse_set_password()
-            self.assertTrue(False, 'It should not work without key')
+            self.fail('It should not work without key')
         self.assertTrue(
             'Use a key similar to' in str(err.exception),
             'It should display the right msg')
@@ -103,10 +106,10 @@ class TestKeychain(TransactionCase):
         account = self._create_account()
 
         config['keychain_key'] = ""
-        with self.assertRaises(Warning):
+        with self.assertRaises(UserError):
             account.clear_password = 'aiuepr'
             account._inverse_set_password()
-            self.assertTrue(False, 'It should not work missing formated key')
+            self.fail('It should not work missing formated key')
 
         self.assertTrue(True, 'It shoud raise a ValueError')
 
@@ -131,13 +134,13 @@ class TestKeychain(TransactionCase):
         account.clear_password = 'abc'
         account._inverse_set_password()
         self.assertEqual(
-            account.get_password(),
+            account._get_password(),
             'abc', 'Should work with dev')
 
         config['running_env'] = 'prod'
-        with self.assertRaises(Warning):
+        with self.assertRaises(UserError):
             self.assertEqual(
-                account.get_password(),
+                account._get_password(),
                 'abc', 'Should not work with prod key')
 
     def test_multienv_blank(self):
@@ -151,12 +154,12 @@ class TestKeychain(TransactionCase):
         account.clear_password = 'abc'
         account._inverse_set_password()
         self.assertEqual(
-            account.get_password(),
+            account._get_password(),
             'abc', 'Should work with dev')
 
         config['running_env'] = 'prod'
         self.assertEqual(
-            account.get_password(),
+            account._get_password(),
             'abc', 'Should work with prod')
 
     def test_multienv_force(self):
@@ -173,14 +176,14 @@ class TestKeychain(TransactionCase):
         account.clear_password = 'abc'
         account._inverse_set_password()
 
-        with self.assertRaises(Warning):
+        with self.assertRaises(UserError):
             self.assertEqual(
-                account.get_password(),
+                account._get_password(),
                 'abc', 'Should not work with dev')
 
         config['running_env'] = 'prod'
         self.assertEqual(
-            account.get_password(),
+            account._get_password(),
             'abc', 'Should work with prod')
 
     def test_wrong_json(self):
@@ -190,9 +193,7 @@ class TestKeychain(TransactionCase):
         for json in wrong_jsons:
             with self.assertRaises(ValidationError) as err:
                 account.write({"data": json})
-                self.assertTrue(
-                    False,
-                    'Should not validate baddly formatted json')
+                self.fail('Should not validate baddly formatted json')
             self.assertTrue(
                 'Data should be a valid JSON' in str(err.exception),
                 'It should raise a ValidationError')
@@ -217,4 +218,25 @@ class TestKeychain(TransactionCase):
                 account.write({"data": json})
                 self.assertTrue(True, 'Should validate json')
             except:
-                self.assertTrue(False, 'It should validate a good json')
+                self.fail('It should validate a good json')
+
+    def test_default_init_and_valid(self):
+        """."""
+        self.keychain._fields['namespace'].selection.append(
+            ('keychain_test_default', 'test')
+        )
+        account = self.keychain.create({
+            "name": "test",
+            "namespace": "keychain_test_default",
+            "login": "test",
+            "technical_name": "keychain.test"
+        })
+        try:
+            account.write({"login": "test default"})
+        except ValidationError:
+            self.fail('It should validate any json in default')
+
+        self.assertEqual(
+            account.data, account._serialize_data(
+                account._default_init_data()),
+            'Data should be default value')

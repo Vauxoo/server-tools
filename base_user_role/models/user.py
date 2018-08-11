@@ -9,9 +9,26 @@ class ResUsers(models.Model):
     _inherit = 'res.users'
 
     role_line_ids = fields.One2many(
-        'res.users.role.line', 'user_id', string=u"Role lines")
+        'res.users.role.line', 'user_id', string=u"Role lines",
+        default=lambda self: self._default_role_lines())
     role_ids = fields.One2many(
-        'res.users.role', string=u"Roles", compute='_compute_role_ids')
+        'res.users.role', string=u"Roles",
+        compute='_compute_role_ids')
+
+    @api.model
+    def _default_role_lines(self):
+        default_user = self.env.ref(
+            'base.default_user', raise_if_not_found=False)
+        default_values = []
+        if default_user:
+            for role_line in default_user.role_line_ids:
+                default_values.append({
+                    'role_id': role_line.role_id.id,
+                    'date_from': role_line.date_from,
+                    'date_to': role_line.date_to,
+                    'is_enabled': role_line.is_enabled,
+                })
+        return default_values
 
     @api.multi
     @api.depends('role_line_ids.role_id')
@@ -44,8 +61,9 @@ class ResUsers(models.Model):
                 lambda rec: rec.is_enabled)
             for role_line in role_lines:
                 role = role_line.role_id
-                group_ids.append(role.group_id.id)
-                group_ids.extend(role.implied_ids.ids)
+                if role:
+                    group_ids.append(role.group_id.id)
+                    group_ids.extend(role.implied_ids.ids)
             group_ids = list(set(group_ids))    # Remove duplicates IDs
             vals = {
                 'groups_id': [(6, 0, group_ids)],

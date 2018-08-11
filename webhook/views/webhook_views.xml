@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
 
         <record id="view_webhook_form" model="ir.ui.view">
             <field name="name">view.webhook.form</field>
@@ -38,9 +37,6 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="main_webhook_menu" name="Webhook"/>
-        <menuitem id="webhook_menu" name="Webhook" parent="main_webhook_menu"/>
-        <menuitem id="webhook_menu_action" name="Webhook" parent="webhook_menu" action="action_webhook"/>
+        <menuitem id="webhook_menu_action" name="Webhook" parent="base.menu_automation" action="action_webhook"/>
 
-    </data>
 </odoo>

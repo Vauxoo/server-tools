@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016 LasLabs Inc.
+# Copyright 2016-2017 LasLabs Inc.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import api, fields, models
@@ -8,14 +8,24 @@ from odoo import api, fields, models
 class BaseKanbanAbstract(models.AbstractModel):
     """ Inherit from this class to add support for Kanban stages to your model.
     All public properties are preceded with kanban_ in order to isolate from
-    child models, with the exception of stage_id, which is a required field in
-    the Kanban widget and must be defined as such. """
+    child models, with the exception of: stage_id, which is a required field in
+    the Kanban widget and must be defined as such, and user_id, which is a
+    special field that has special treatment in some places (such as the
+    mail module).
+    """
 
     _name = 'base.kanban.abstract'
     _order = 'kanban_priority desc, kanban_sequence'
     _group_by_full = {
         'stage_id': lambda s, *a, **k: s._read_group_stage_ids(*a, **k),
     }
+
+    @api.model
+    def _default_stage_id(self):
+        return self.env['base.kanban.stage'].search(
+            [('res_model_id.model', '=', self._name)],
+            limit=1,
+        )
 
     kanban_sequence = fields.Integer(
         default=10,
@@ -98,13 +108,7 @@ class BaseKanbanAbstract(models.AbstractModel):
              ' a specific user)\n'
     )
 
-    @api.model
-    def _default_stage_id(self):
-        return self.env['base.kanban.stage']
-
     @api.multi
     def _read_group_stage_ids(self, stages, domain, order):
         search_domain = [('res_model_id.model', '=', self._name)]
-        if domain:
-            search_domain.extend(domain)
         return stages.search(search_domain, order=order)

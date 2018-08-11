@@ -1,29 +1,30 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * date_range
-# 
+#
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-24 02:40+0000\n"
-"PO-Revision-Date: 2017-05-24 02:40+0000\n"
+"POT-Creation-Date: 2018-03-02 18:41+0000\n"
+"PO-Revision-Date: 2018-03-02 18:41+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: hr\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: date_range
 #: code:addons/date_range/models/date_range.py:43
 #, python-format
-msgid "%s is not a valid range (%s >= %s)"
-msgstr "%s nije valjani raspon (%s >= %s)"
+msgid "%s is not a valid range (%s > %s)"
+msgstr "%s nije valjani raspon (%s > %s)"
 
 #. module: date_range
 #: code:addons/date_range/models/date_range.py:71
@@ -45,7 +46,7 @@ msgstr "Tip raspona datuma mora biti jedinstven unutar tvrtke!"
 #: model:ir.model.fields,field_description:date_range.field_date_range_active
 #: model:ir.model.fields,field_description:date_range.field_date_range_type_active
 msgid "Active"
-msgstr "Aktivan"
+msgstr "Aktivno"
 
 #. module: date_range
 #: model:ir.model.fields,field_description:date_range.field_date_range_type_allow_overlap
@@ -125,7 +126,7 @@ msgstr "Datum početka"
 #: model:ir.model.fields,field_description:date_range.field_date_range_generator_display_name
 #: model:ir.model.fields,field_description:date_range.field_date_range_type_display_name
 msgid "Display Name"
-msgstr "Naziv (za prikaz)"
+msgstr "Naziv "
 
 #. module: date_range
 #: model:ir.model.fields,field_description:date_range.field_date_range_generator_duration_count
@@ -185,7 +186,7 @@ msgstr "Zadnje ažuriranje"
 #: model:ir.model.fields,field_description:date_range.field_date_range_name
 #: model:ir.model.fields,field_description:date_range.field_date_range_type_name
 msgid "Name"
-msgstr "Ime"
+msgstr "Naziv"
 
 #. module: date_range
 #: model:ir.model.fields,field_description:date_range.field_date_range_generator_count
@@ -210,14 +211,13 @@ msgstr "Izvrši"
 #. module: date_range
 #: model:ir.model.fields,help:date_range.field_date_range_active
 #: model:ir.model.fields,help:date_range.field_date_range_type_active
-msgid ""
-"The active field allows you to hide the date range without removing it."
+msgid "The active field allows you to hide the date range without removing it."
 msgstr "Polje aktivan omogućuje sakrivanje raspona bez da ga brišete."
 
 #. module: date_range
 #: model:ir.model.fields,field_description:date_range.field_date_range_generator_type_id
-#: model:ir.model.fields,field_description:date_range.field_date_range_type_id_1617
-#: model:ir.model.fields,field_description:date_range.field_date_range_type_name_1614
+#: model:ir.model.fields,field_description:date_range.field_date_range_type_id_2025
+#: model:ir.model.fields,field_description:date_range.field_date_range_type_name_2022
 msgid "Type"
 msgstr "Tip"
 

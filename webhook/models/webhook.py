@@ -1,25 +1,19 @@
 # -*- coding: utf-8 -*-
-##############################################################
-#    Module Writen For Odoo, Open Source Management Solution
-#
-#    Copyright (c) 2011 Vauxoo - http://www.vauxoo.com
-#    All Rights Reserved.
-#    license: http://www.gnu.org/licenses/agpl-3.0.html
-#    info Vauxoo (info@vauxoo.com)
-#    coded by: moylop260@vauxoo.com
-#    planned by: nhomar@vauxoo.com
-#                moylop260@vauxoo.com
-############################################################################
+# Copyright 2016 Vauxoo - https://www.vauxoo.com/
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
 import traceback
+
 from odoo import api, exceptions, fields, models, tools
+from odoo.tools.safe_eval import safe_eval
 from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
+
 try:
     import ipaddress
-except (ImportError, IOError) as err:
+except ImportError as err:
     _logger.debug(err)
 
 
@@ -87,28 +81,23 @@ class Webhook(models.Model):
         :return: Result of process python code.
         """
         self.ensure_one()
-        for rec in self:
-            res = None
-            eval_dict = {
-                'user': rec.env.user,
-                'object': rec,
-                'request': request,
-                # copy context to prevent side-effects of eval
-                'context': dict(rec.env.context),
-            }
-            try:
-                # pylint: disable=W0123
-                res = eval(
-                    python_code,
-                    eval_dict,
-                )
-            except BaseException:
-                error = tools.ustr(traceback.format_exc())
-                _logger.debug(
-                    'python_code "%s" with dict [%s] error [%s]',
-                    python_code, eval_dict, error)
-            if isinstance(res, basestring):
-                res = tools.ustr(res)
+        res = None
+        eval_dict = {
+            'user': self.env.user,
+            'object': self,
+            'request': request,
+            # copy context to prevent side-effects of eval
+            'context': dict(self.env.context),
+        }
+        try:
+            res = safe_eval(python_code, eval_dict)
+        except BaseException:
+            error = tools.ustr(traceback.format_exc())
+            _logger.debug(
+                'python_code "%s" with dict [%s] error [%s]',
+                python_code, eval_dict, error)
+        if isinstance(res, basestring):
+            res = tools.ustr(res)
         return res
 
     @api.model
@@ -122,12 +111,12 @@ class Webhook(models.Model):
         :return: object of webhook found or
                  if not found then return False
         """
-        for webhook in self.search([('active', '=', True)]):
+        for webhook in self.search([]):
             remote_address = webhook.process_python_code(
-                webhook.python_code_get_ip, request)[0]
+                webhook.python_code_get_ip, request)
             if not remote_address:
                 continue
-            if webhook.is_address_range(remote_address)[0]:
+            if webhook.is_address_range(remote_address):
                 return webhook
         return False
 
@@ -141,13 +130,12 @@ class Webhook(models.Model):
                  else then return False
         """
         self.ensure_one()
-        for rec in self:
-            for address in rec.address_ids:
-                ipn = ipaddress.ip_network(u'' + address.name)
-                hosts = [host.exploded for host in ipn.hosts()]
-                hosts.append(address.name)
-                if remote_address in hosts:
-                    return True
+        for address in self.address_ids:
+            ipn = ipaddress.ip_network(u'' + address.name)
+            hosts = [host.exploded for host in ipn.hosts()]
+            hosts.append(address.name)
+            if remote_address in hosts:
+                return True
         return False
 
     @api.model
@@ -189,33 +177,29 @@ class Webhook(models.Model):
         :return: True
         """
         self.ensure_one()
-        for rec in self:
-            event = rec.process_python_code(
-                rec.python_code_get_event, request)
-            if isinstance(event, list):
-                event = event[0]
-            if not event:
-                raise exceptions.ValidationError(_(
-                    'event is not defined'))
-            method_event_name_base = \
-                'run_' + rec.name + \
-                '_' + event
-            methods_event_name = rec.get_event_methods(method_event_name_base)
-            if not methods_event_name:
-                # if is a 'ping' event then return True
-                # because the request is received fine.
-                if event in rec.get_ping_events():
-                    return True
-                raise exceptions.ValidationError(_(
-                    'Not defined methods "%s" yet' % (
-                        method_event_name_base)))
-            rec.env.request = request
-            for method_event_name in methods_event_name:
-                method = getattr(rec, method_event_name)
-                res_method = method()
-                if isinstance(res_method, list) and len(res_method) == 1:
-                    if res_method[0] is NotImplemented:
-                        _logger.debug(
-                            'Not implemented method "%s" yet',
-                            method_event_name)
+        event = self.process_python_code(
+            self.python_code_get_event, request)
+        if not event:
+            raise exceptions.ValidationError(_(
+                'event is not defined'))
+        method_event_name_base = \
+            'run_' + self.name + \
+            '_' + event
+        methods_event_name = self.get_event_methods(method_event_name_base)
+        if not methods_event_name:
+            # if is a 'ping' event then return True
+            # because the request is received fine.
+            if event in self.get_ping_events():
+                return True
+            raise exceptions.ValidationError(_(
+                'Not defined methods "%s" yet' % (
+                    method_event_name_base)))
+        self.env.request = request
+        for method_event_name in methods_event_name:
+            method = getattr(self, method_event_name)
+            res_method = method()
+            if isinstance(res_method, list) and len(res_method) == 1:
+                if res_method[0] is NotImplemented:
+                    _logger.debug(
+                        'Not implemented method "%s" yet', method_event_name)
         return True

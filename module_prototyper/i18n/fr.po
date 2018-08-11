@@ -1,21 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * module_prototyper
-# 
+#
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-22 00:55+0000\n"
-"PO-Revision-Date: 2017-02-22 00:55+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"POT-Creation-Date: 2017-12-01 02:10+0000\n"
+"PO-Revision-Date: 2017-12-01 02:10+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: module_prototyper
@@ -86,8 +86,7 @@ msgstr "Contexte"
 #. module: module_prototyper
 #: model:ir.model.fields,help:module_prototyper.field_ir_model_fields_client_context
 msgid ""
-"Context to use on the client side when handling the field (python "
-"dictionary)"
+"Context to use on the client side when handling the field (python dictionary)"
 msgstr ""
 
 #. module: module_prototyper
@@ -129,14 +128,14 @@ msgstr "Dépendances"
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_description
 #: model:ir.ui.view,arch_db:module_prototyper.module_prototyper_base_form_view
 msgid "Description"
-msgstr "Descriptions"
+msgstr "Description"
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_api_version_display_name
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_display_name
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_display_name
 msgid "Display Name"
-msgstr "Nom à afficher"
+msgstr "Nom affiché"
 
 #. module: module_prototyper
 #: model:ir.model.fields,help:module_prototyper.field_module_prototyper_summary
@@ -167,8 +166,8 @@ msgstr ""
 #: model:ir.model.fields,help:module_prototyper.field_module_prototyper_field_ids
 msgid ""
 "Enter the list of fields that you have created or modified and want to "
-"export in this module. New models will be exported as long as you choose one"
-" of his fields."
+"export in this module. New models will be exported as long as you choose one "
+"of his fields."
 msgstr ""
 
 #. module: module_prototyper
@@ -202,8 +201,8 @@ msgstr ""
 #. module: module_prototyper
 #: model:ir.model.fields,help:module_prototyper.field_module_prototyper_dependency_ids
 msgid ""
-"Enter the list of required modules that need to be installed for your module"
-" to work properly"
+"Enter the list of required modules that need to be installed for your module "
+"to work properly"
 msgstr ""
 
 #. module: module_prototyper
@@ -281,7 +280,7 @@ msgstr "Fichier"
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_module_export_name
 msgid "File Name"
-msgstr "Nom du fichier"
+msgstr "Nom de Fichier"
 
 #. module: module_prototyper
 #: selection:module_prototyper,license:0
@@ -531,7 +530,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_view_ids
 #: model:ir.ui.menu,name:module_prototyper.menu_action_ui_view
 msgid "Views"
-msgstr "Vues"
+msgstr "Views"
 
 #. module: module_prototyper
 #: model:ir.model.fields,field_description:module_prototyper.field_module_prototyper_website
