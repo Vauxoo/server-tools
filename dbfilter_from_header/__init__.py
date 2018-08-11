@@ -5,16 +5,21 @@
 
 import re
 from odoo import http
+from odoo.tools import config
 
-db_filter_org = http.db_filter
+
+def post_load():
+    db_filter_org = http.db_filter
 
 
-def db_filter(dbs, httprequest=None):
-    dbs = db_filter_org(dbs, httprequest)
-    httprequest = httprequest or http.request.httprequest
-    db_filter_hdr = httprequest.environ.get('HTTP_X_ODOO_DBFILTER')
-    if db_filter_hdr:
-        dbs = [db for db in dbs if re.match(db_filter_hdr, db)]
-    return dbs
+    def db_filter(dbs, httprequest=None):
+        dbs = db_filter_org(dbs, httprequest)
+        httprequest = httprequest or http.request.httprequest
+        db_filter_hdr = httprequest.environ.get('HTTP_X_ODOO_DBFILTER')
+        if db_filter_hdr:
+            dbs = [db for db in dbs if re.match(db_filter_hdr, db)]
+        return dbs
 
-http.db_filter = db_filter
+    if config.get('proxy_mode') and \
+       'dbfilter_from_header' in config.get('server_wide_modules'):
+        http.db_filter = db_filter
