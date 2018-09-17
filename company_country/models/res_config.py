@@ -18,9 +18,15 @@ class CountryCompanyConfigSettings(models.TransientModel):
             self.env.ref('base.main_company').write({'country_id': None})
             return
         if not country_code:
-            raise ValidationError(
-                _('Error COUNTRY environment variable with country code'
-                  ' not defined'))
+            l10n_to_install = self.env['ir.module.module'].search([
+                ('state', '=', 'to install'),
+                ('name', '=like', r'l10n_%')], limit=1)
+            if not l10n_to_install:
+                raise ValidationError(
+                    _('Error COUNTRY environment variable with country code '
+                        'not defined and no localization found in pool.'))
+            country_code = l10n_to_install.name.split('l10n_')[1][:2].upper()
+
         country = self.env['res.country'].search([
             ('code', 'ilike', country_code)], limit=1)
         if not country:

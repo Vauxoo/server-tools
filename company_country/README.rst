@@ -23,6 +23,17 @@ To configure this module, you need to:
 
 #. Set the environment variable COUNTRY using 2 letter of ISO 3166 codes.
 
+Odoo-sh
+=======
+
+In case you need to configure odoo-sh:
+
+- Go to your project
+- Under settings go to **Module installation**
+- Write down the modules you want to install, but make sure the localization is in that line along with the module you want to install
+
+.. image:: https://user-images.githubusercontent.com/4094256/45762860-ef89cd00-bbf4-11e8-9902-9421b4163e81.png
+
 Usage
 =====
 
