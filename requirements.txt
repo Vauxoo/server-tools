@@ -1,8 +1,5 @@
-pyldap==2.4.28
-unidecode
+checksumdir
+raven
+pysftp
 acme_tiny
 IPy
-validate_email
-pysftp
-fdb
-sqlalchemy
