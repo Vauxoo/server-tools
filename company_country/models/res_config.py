@@ -20,7 +20,7 @@ class CountryCompanyConfigSettings(models.TransientModel):
         if not country_code:
             l10n_to_install = self.env['ir.module.module'].search([
                 ('state', '=', 'to install'),
-                ('name', '=like', r'l10n_%')], limit=1)
+                ('name', '=like', 'l10n_%')], limit=1)
             if not l10n_to_install:
                 raise ValidationError(
                     _('Error COUNTRY environment variable with country code '
