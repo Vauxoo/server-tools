@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {'name': 'Exception Rule',
- 'version': '10.0.1.0.0',
+ 'version': '10.0.3.0.2',
  'category': 'Generic Modules',
  'summary': """This module provide an abstract model to manage customizable
   exceptions to be applied on different models (sale order, invoice, ...)""",
@@ -18,4 +18,5 @@
      'views/base_exception_view.xml',
  ],
  'installable': True,
+ 'pre_init_hook': 'pre_init_hook',
  }

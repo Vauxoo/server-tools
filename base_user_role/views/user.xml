@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2014 ABF OSIELL <http://osiell.com>
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+ -->
 <odoo>
 
 <record id="view_res_users_form_inherit" model="ir.ui.view">
@@ -12,10 +13,11 @@
             <page string="Roles">
                 <field name="role_line_ids" nolabel="1">
                     <tree editable="bottom" decoration-muted="not is_enabled">
-                        <field name="role_id" required="1"/>
+                        <field name="role_id"/>
                         <field name="date_from"/>
                         <field name="date_to"/>
                         <field name="is_enabled"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
                     </tree>
                 </field>
             </page>
