@@ -11,7 +11,7 @@ class CompanyCountryConfigSettings(models.TransientModel):
     _description = 'Company Country Configuration Settings'
 
     @api.model
-    def load_company_country(self, country_code=None):
+    def load_company_country(self, country_code='MX'):
         if not country_code:
             country_code = os.environ.get('COUNTRY')
         if country_code == "":
