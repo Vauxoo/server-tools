@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 Vauxoo
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+import logging
 import os
 
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
+
+_logger = logging.getLogger(__name__)
 
 
 class CountryCompanyConfigSettings(models.TransientModel):
@@ -12,10 +15,20 @@ class CountryCompanyConfigSettings(models.TransientModel):
 
     @api.model
     def load_country_company(self, country_code=None):
+        account_installed = self.env['ir.module.module'].search([
+            ('name', '=', 'account'),
+            ('state', '=', 'installed'),
+            ], limit=1)
+        if account_installed:
+            # If the account module is installed, that means changing the
+            # company's country will have no effect, as the account hook was
+            # already run and an l10n module was already been installed
+            _logger.info("account module already installed, skipping")
+            return
         if not country_code:
             country_code = os.environ.get('COUNTRY')
         if country_code == "":
-            self.env.ref('base.main_company').write({'country_id': None})
+            self.env.ref('base.main_company').write({'country_id': False})
             return
         if not country_code:
             l10n_to_install = self.env['ir.module.module'].search([

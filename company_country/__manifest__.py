@@ -4,9 +4,10 @@
 {
     "name": "Country Company",
     "summary": "Set country to main company",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.0.1",
     "category": "base",
     "website": "https://odoo-community.org/",
+    "maintainers": ['moylop260', 'luisg123v'],
     "author": "Vauxoo, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "depends": [],
