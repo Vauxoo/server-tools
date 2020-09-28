@@ -2,7 +2,8 @@ python-ldap
 unidecode
 acme_tiny
 IPy
-validate_email
+email_validator
+pyotp==2.2.7
 pysftp
 fdb
 sqlalchemy
