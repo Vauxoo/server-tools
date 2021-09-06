@@ -1,5 +1,5 @@
 python-ldap
-unidecode
+unidecode==1.2.0
 acme_tiny
 IPy
 email_validator
